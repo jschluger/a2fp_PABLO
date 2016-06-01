@@ -1,18 +1,19 @@
-plan20160531
+plan2016-05-31
 
 Crucial Jobs:
 - getting processing to load (no graphics = rip)
 
 Core functionality:
-- bloons should move
-- turrets should kill through priority
-- turrets should be placed in a valid location
+- bloons should move along paths, which the user can choose at the begining of the game
+- turrets should target bloons in their proximity and then kill through prioriy
+- user should be able to buy turrets and place them on valid locations on the map
 - hp
 - money
 
 Extras:
 - stronger bloons
 - better turrets (upgrades)
+- user can change what priority of enemies to be killed is based on
 - other maps
 
 Priority/Prerequisite Order:
