@@ -28,4 +28,9 @@ Collaborative Stuff:
 - how priority queue actually works (agreement)
 
 Timeline:
-We have a tight schedule and course changes don't seem so friendly at the moment. However, we think the three of us can crank up a working version by the beginning of next week and we aim to work as diligently as possible to achieve all our goals. We have little room for setbacks and course changes, but we have a set plan to implement this project. We haven't figured who will be in charge of what task but we do know the steps to take from here (as shown by the Prereq Order).
+We have a tight schedule and course changes don't seem so friendly at the moment. However, 
+we think the three of us can crank up a working version by the beginning of next week and
+we aim to work as diligently as possible to achieve all our goals. We have little room for
+setbacks and course changes, but we have a set plan to implement this project. We haven't
+figured who will be in charge of what task but we do know the steps to take from here 
+(as shown by the Prereq Order).
