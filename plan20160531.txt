@@ -1,0 +1,29 @@
+plan20160531
+
+Crucial Jobs:
+- getting processing to load (no graphics = rip)
+
+Core functionality:
+- bloons should move
+- turrets should kill through priority
+- turrets should be placed in a valid location
+- hp
+- money
+
+Extras:
+- stronger bloons
+- better turrets (upgrades)
+- other maps
+
+Priority/Prerequisite Order:
+Bloon movement -> Turret Placement -> Turret Attacks -> Map -> Extras
+
+Tasks that can be delegated:
+- turret/bloon variety (Part of Extras)
+- hp
+- money
+
+Collaborative Stuff:
+- how priority queue actuall works (agreement)
+
+Timeline:
