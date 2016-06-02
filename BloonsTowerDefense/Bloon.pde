@@ -29,6 +29,7 @@ public class Bloon {
   }
     
   public void display() {
+    fill(c);
     ellipse(x, y, 15, 15);
   }
 
