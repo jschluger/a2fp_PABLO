@@ -52,9 +52,12 @@ void mouseClicked() {
   if (!locked && mouseX < 50 && mouseY < 50) {
     locked = true;
   }
-  else if (locked = true) {
+}
+
+void mousePressed() {
+  if (locked) {
     towers.add(t);
     t = new Tower();
-    locked = false;
   }
+  locked = false;
 }
