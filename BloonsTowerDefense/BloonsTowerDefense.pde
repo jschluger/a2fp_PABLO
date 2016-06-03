@@ -39,8 +39,8 @@ void draw() {
     if (onScreen.get(i).stage == 14) onScreen.remove(i);
   }
   if (locked) {
-    t.x = mouseX-xOffset - 20; 
-    t.y = mouseY-yOffset - 20;
+    t.x = mouseX - 20; 
+    t.y = mouseY - 20;
   }
   for (int i = 0; i < towers.size(); i++) {
     towers.get(i).display();
@@ -52,21 +52,9 @@ void mouseClicked() {
   if (mouseX < 50 && mouseY < 50) {
     locked = true;
   }
-}
-
-void mousePressed() {
-  if (locked) {
-    t.x = mouseX-xOffset - 20; 
-    t.y = mouseY-yOffset - 20;
-  }
-}
-
-
-void mouseReleased() {
-  if (locked) {
+  else if (locked = true) {
     towers.add(t);
     t = new Tower();
+    locked = false;
   }
-  locked = false;
-  
 }
