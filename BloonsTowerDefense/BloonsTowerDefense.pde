@@ -13,7 +13,7 @@ void setup(){
   locked = false;
   t = new Tower();
   for (int i = 0; i < 15; i++)
-    offScreen.add( new Bloon() );
+    offScreen.add( new Bloon( (int)(Math.random()* 3) + 1) );
   size(800, 600);
 
   //load map

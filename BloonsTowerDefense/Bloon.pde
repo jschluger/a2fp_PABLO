@@ -8,15 +8,13 @@ public class Bloon {
     setHealth(1);
     x = 0;
     y = height / 2 - 15;
-    speed = 2;
+    speed = 1;
     stage = 0;
   }
   
-  public Bloon(int hp, float X, float Y) {
+  public Bloon(int hp) {
     this();
     setHealth(hp);
-    x = X;
-    y = Y;
   }
 
   public void setHealth(int hp) {
@@ -27,6 +25,7 @@ public class Bloon {
       c = color(0,0,255);
     else
       c = color(0,255,0);
+    speed = hp;
   }
     
   public void display() {
