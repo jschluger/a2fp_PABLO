@@ -49,7 +49,7 @@ void draw() {
 }
 
 void mouseClicked() {
-  if (mouseX < 50 && mouseY < 50) {
+  if (!locked && mouseX < 50 && mouseY < 50) {
     locked = true;
   }
   else if (locked = true) {
