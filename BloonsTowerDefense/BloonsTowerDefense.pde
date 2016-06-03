@@ -47,12 +47,18 @@ void draw() {
   }
   if (locked) t.displayLocked();
   else t.display();
+  
+  // coordinate debug
+  ellipse( mouseX, mouseY, 2, 2 );
+  fill(color(0,0,0));
+  text( "x: " + mouseX + " y: " + mouseY, mouseX + 2, mouseY );
 }
 
 void mouseClicked() {
   if (!locked && mouseX < 50 && mouseY < 50) {
     locked = true;
   }
+  
 }
 
 void mousePressed() {
@@ -61,5 +67,5 @@ void mousePressed() {
     t = new Tower();
   }
   locked = false;
-}
 
+}
