@@ -1,4 +1,5 @@
 ArrayList<Bloon> offScreen, onScreen;
+ArrayList<Tower> towers;
 int stage;
 boolean locked;
 Tower t;
@@ -7,13 +8,17 @@ int xOffset, yOffset;
 void setup(){
   offScreen = new ArrayList<Bloon>();
   onScreen = new ArrayList<Bloon>();
-  t = new Tower();
+  towers = new ArrayList<Tower>();
   locked = false;
+  t = new Tower();
   for (int i = 0; i < 15; i++)
     offScreen.add( new Bloon() );
   size(600, 600);
   //load map
-    
+  for (int i = 0; i < towers.size(); i++) {
+    towers.get(i).display();
+  }
+  t.display();
 }
 
 void draw() {
@@ -26,28 +31,35 @@ void draw() {
     b.display();
     b.move();
   }
-
+  if (locked) {
+    t.x = mouseX-xOffset; 
+    t.y = mouseY-yOffset;
+  }
+  for (int i = 0; i < towers.size(); i++) {
+    towers.get(i).display();
+  }
   t.display();
 }
 
+void mouseClicked() {
+  if (mouseX < 50 && mouseY < 50) {
+    locked = true;
+  }
+}
+
 void mousePressed() {
-  if(!locked) { 
-    locked = true; 
-  } else {
-    locked = false;
-  }
-  xOffset = mouseX-t.x; 
-  yOffset = mouseY-t.y; 
-
-}
-
-void mouseDragged() {
-  if(locked) {
+  if (locked) {
     t.x = mouseX-xOffset; 
-    t.y = mouseY-yOffset; 
+    t.y = mouseY-yOffset;
   }
 }
+
 
 void mouseReleased() {
+  if (locked) {
+    towers.add(t);
+    t = new Tower();
+  }
   locked = false;
+  
 }
