@@ -45,7 +45,8 @@ void draw() {
   for (int i = 0; i < towers.size(); i++) {
     towers.get(i).display();
   }
-  t.display();
+  if (locked) t.displayLocked();
+  else t.display();
 }
 
 void mouseClicked() {
@@ -59,5 +60,9 @@ void mousePressed() {
     towers.add(t);
     t = new Tower();
   }
+<<<<<<< HEAD
   locked = false;
 }
+=======
+}
+>>>>>>> 438b06673f5290487015b37713d36dde32f8f493
