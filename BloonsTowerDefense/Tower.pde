@@ -6,8 +6,8 @@ public class Tower {
   public Tower() {
     rad = 50;
     power = 1;
-    x = mouseX;
-    y = mouseY;
+    x = 0;
+    y = 0;
     c = color(random(255), random(255), random(255));
   }
 

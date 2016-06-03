@@ -32,8 +32,8 @@ void draw() {
     b.move();
   }
   if (locked) {
-    t.x = mouseX-xOffset; 
-    t.y = mouseY-yOffset;
+    t.x = mouseX-xOffset - 20; 
+    t.y = mouseY-yOffset - 20;
   }
   for (int i = 0; i < towers.size(); i++) {
     towers.get(i).display();
@@ -49,8 +49,8 @@ void mouseClicked() {
 
 void mousePressed() {
   if (locked) {
-    t.x = mouseX-xOffset; 
-    t.y = mouseY-yOffset;
+    t.x = mouseX-xOffset - 20; 
+    t.y = mouseY-yOffset - 20;
   }
 }
 
