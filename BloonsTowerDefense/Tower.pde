@@ -1,7 +1,10 @@
+import java.util.*;
+
 public class Tower {
   int rad;
   int power;
   int c, x, y;
+  PriorityQueue<Bloon> killList;
 
   public Tower() {
     rad = 150;
@@ -9,6 +12,7 @@ public class Tower {
     x = 0;
     y = 0;
     c = color(random(255), random(255), random(255));
+    killList = new PriorityQueue<Bloon>();
   }
 
   public Tower(int r, int p) {
@@ -20,6 +24,8 @@ public class Tower {
   public void display() {
     fill(c);
     rect(x, y, 40, 40);
+    //if ( killList.peek() != null) 
+    //  BloonsTowerDefense.onScreen.remove( killList.poll() );
   }
 
   public void displayLocked() {
@@ -28,6 +34,14 @@ public class Tower {
     
     fill(c);
     rect(x, y, 40, 40);
+  }
+  
+  public void updateQueue() {
+      for (Bloon b : BloonsTowerDefense.onScreen) {
+         if ( sqrt( pow(b.x - x, 2) + pow(b.y - y, 2)) < rad )
+           killList.offer( b );
+      }
+      
     
   }
 }//end class Tower

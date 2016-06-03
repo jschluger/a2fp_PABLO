@@ -1,4 +1,4 @@
-ArrayList<Bloon> offScreen, onScreen;
+static ArrayList<Bloon> offScreen, onScreen;
 ArrayList<Tower> towers;
 int stage;
 boolean locked;
@@ -62,4 +62,3 @@ void mousePressed() {
   }
   locked = false;
 }
-
