@@ -4,6 +4,7 @@ int stage;
 boolean locked;
 Tower t;
 int xOffset, yOffset;
+PImage map;
 
 void setup(){
   offScreen = new ArrayList<Bloon>();
@@ -13,8 +14,13 @@ void setup(){
   t = new Tower();
   for (int i = 0; i < 15; i++)
     offScreen.add( new Bloon() );
-  size(600, 600);
+  size(800, 600);
+
   //load map
+  map = loadImage("map.png");
+  map.resize(width, height);
+  background(map);
+  
   for (int i = 0; i < towers.size(); i++) {
     towers.get(i).display();
   }
@@ -26,10 +32,11 @@ void draw() {
   if (! offScreen.isEmpty() && frameCount % 60 == 0) {
     onScreen.add( offScreen.remove(0) );
   }
-  background(0);
-  for (Bloon b : onScreen){
-    b.display();
-    b.move();
+  background(map);
+  for (int i = 0; i < onScreen.size(); i++){
+    onScreen.get(i).display();
+    onScreen.get(i).move();
+    if (onScreen.get(i).stage == 14) onScreen.remove(i);
   }
   if (locked) {
     t.x = mouseX-xOffset - 20; 

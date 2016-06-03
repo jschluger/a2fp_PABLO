@@ -1,14 +1,15 @@
 public class Bloon {
   int health;
   int c;
-  float x, y, dx, dy;
+  float x, y, speed;
+  int stage;
   
   public Bloon() {
     setHealth(1);
     x = 0;
-    y = height / 2;
-    dx = 2;
-    dy = 0;
+    y = height / 2 - 15;
+    speed = 2;
+    stage = 0;
   }
   
   public Bloon(int hp, float X, float Y) {
@@ -34,8 +35,65 @@ public class Bloon {
   }
 
   public void move() {
-    x += dx;
-    y += dy;
+     
+     if ( stage == 0 ) {
+       x += speed;
+       if (x > 115) stage++; 
+     }
+     else if ( stage == 1 ) {
+       y -= speed;
+       if (y < 120) stage++; 
+     }
+     else if ( stage == 2 ) {
+       x += speed;
+       if (x > 256) stage++; 
+     }
+     else if ( stage == 3 ) {
+       y += speed;
+       if (y > 437) stage++; 
+     }
+     else if ( stage == 4 ) {
+       x -= speed;
+       if (x < 75) stage++; 
+     }
+     else if ( stage == 5 ) {
+       y += speed;
+       if (y > height - 65) stage++; 
+     }
+     else if ( stage == 6 ) {
+       x += speed;
+       if (x > 525) stage++; 
+     }
+     else if ( stage == 7 ) {
+       y -= speed;
+       if (y < 375) stage++; 
+     }
+     else if ( stage == 8 ) {
+       x -= speed;
+       if (x < 375) stage++; 
+     }
+     else if ( stage == 9 ) {
+       y -= speed;
+       if ( y <  244) stage++; 
+     }
+     else if ( stage == 10 ) {
+       x += speed;
+       if (x > 525) stage++; 
+     }
+     else if ( stage == 11 ) {
+       y -= speed;
+       if (y < 85) stage++; 
+     }
+     else if ( stage == 12 ) {
+       x -= speed;
+       if (x < 315) stage++; 
+     }
+     else if ( stage == 13 ) {
+       y -= speed;
+       if (y < 0) stage++; 
+     }
+     //stage 14 == dead
+     
   }
   
 }//end class Bloon
