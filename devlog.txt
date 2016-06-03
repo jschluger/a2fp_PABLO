@@ -13,6 +13,27 @@ Team Pablo's . . .
                                               \______/ 
 
 =========================================================
+2016-06-03:
+Team:
+
+Manish: 
+Jack: 
+Richard:
+
+=========================================================
+2016-06-02:
+Team: Decided we must implement bloon movement first and have working version of tower
+
+Manish: Created Tower class and implemented dragging functionality of towers in map
+Jack: Loaded game image as background and implemented bloon movement
+Richard: Modified dragging functionality and added Tower's position variables
+
+=========================================================
+2016-06-01:
+Jack: Created Bloon class and BloonsTowerDefense sketch file, basic functionality
+
+=========================================================
 2016-05-31:
 Team: Discussed plan and priorities to meet beforehand, coding will commence tomorrow.
+
 =========================================================
