@@ -2,6 +2,8 @@ static ArrayList<Bloon> offScreen, onScreen;
 ArrayList<Tower> towers;
 int stage;
 boolean locked;
+// @col
+static boolean validLoc; //validLoc for valid location;
 Tower t;
 int xOffset, yOffset;
 PImage map;
@@ -21,6 +23,11 @@ void setup(){
   map.resize(width, height);
   background(map);
   
+  // @col
+  //load pixels (for validLoc)
+  loadPixels();
+  // @colEnd
+  
   for (int i = 0; i < towers.size(); i++) {
     towers.get(i).display();
   }
@@ -28,6 +35,13 @@ void setup(){
 }
 
 void draw() {
+  //@col
+  //color debug (color in original map)
+    color col = pixels[mouseY * 600 + mouseX];
+    float green = green(col);
+    int averageGreenCol = averageGreenCol();
+  //@colEnd
+  
   //adding the bloons one at a time to the screen
   if (! offScreen.isEmpty() && frameCount % 60 == 0) {
     onScreen.add( offScreen.remove(0) );
@@ -39,6 +53,14 @@ void draw() {
     if (onScreen.get(i).stage == 14) onScreen.remove(i);
   }
   if (locked) {
+    //@col
+    if (green > 145 && green < 150) {
+      validLoc = true;
+    }
+    else if (green < 145 && green > 137){
+      validLoc = false;
+    }
+    //@colEnd
     t.x = mouseX - 20; 
     t.y = mouseY - 20;
   }
@@ -52,6 +74,15 @@ void draw() {
   ellipse( mouseX, mouseY, 2, 2 );
   fill(color(0,0,0));
   text( "x: " + mouseX + " y: " + mouseY, mouseX + 2, mouseY );
+  
+  //@col
+  // color debug
+  text( "color :" + col, mouseX + 2, mouseY - 20);
+  // greenness
+  text( "green: " + green, mouseX + 2, mouseY - 40);
+  // average greenness
+  text( "avggreen:" + averageGreenCol, mouseX + 2, mouseY - 60);
+  //@colEnd
 }
 
 void mouseClicked() {
@@ -69,3 +100,32 @@ void mousePressed() {
   locked = false;
 
 }
+
+//@col
+color averageGreenCol() {
+  color ret=0;
+  int[][] around = new int[20][20]; //less memory consumption than 40*40
+  for (int i = 0; i < around.length;i++) {
+    for (int p = 0; p < around[0].length;p++) {
+      int xcor = mouseX + 10 - i;
+      int ycor = mouseY + 10 - i;
+      if (xcor > 600) {
+        xcor = 600;
+      }
+      if (xcor < 0) {
+        xcor = 0;
+      }
+      if (ycor > 600) {
+        ycor = 600;
+      }
+      if (ycor < 0) {
+        ycor = 0;
+      }
+      ret += pixels[xcor + ycor * 600];
+    }
+  }
+  
+  
+  return ret/400;
+}
+//@colEnd
