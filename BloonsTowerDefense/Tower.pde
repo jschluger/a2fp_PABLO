@@ -29,7 +29,15 @@ public class Tower {
   }
 
   public void displayLocked() {
-    fill(50, 50, 50, 10);
+    //@col
+    // if valid location
+    if (BloonsTowerDefense.validLoc) { //green
+      fill(color(0,255,0),100);
+    }
+    else { //red
+      fill(color(255,0,0),100);
+    }
+    //@colEnd
     ellipse(x + 20, y + 20, rad, rad);
     
     fill(c);
