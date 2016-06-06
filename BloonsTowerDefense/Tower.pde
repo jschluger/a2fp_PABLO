@@ -4,7 +4,7 @@ public class Tower {
   int rad;
   int power;
   int c, x, y;
-  PriorityQueue<Bloon> killList;
+  Queue<Bloon> killList;
 
   public Tower() {
     rad = 150;
