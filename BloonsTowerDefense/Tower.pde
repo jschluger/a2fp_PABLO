@@ -4,7 +4,7 @@ public class Tower {
   int rad;
   int power;
   int c, x, y;
-  PriorityQueue<Bloon> killList;
+  Queue<Bloon> killList;
 
   public Tower() {
     rad = 150;
@@ -24,8 +24,8 @@ public class Tower {
   public void display() {
     fill(c);
     rect(x, y, 40, 40);
-    //if ( killList.peek() != null) 
-    //  BloonsTowerDefense.onScreen.remove( killList.poll() );
+    if ( killList.peek() != null ) 
+      BloonsTowerDefense.onScreen.remove( killList.poll() );
   }
 
   public void displayLocked() {
