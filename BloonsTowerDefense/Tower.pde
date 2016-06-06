@@ -24,7 +24,7 @@ public class Tower {
   public void display() {
     fill(c);
     rect(x, y, 40, 40);
-    if ( killList.peek() != null) 
+    if ( killList.peek() != null ) 
       BloonsTowerDefense.onScreen.remove( killList.poll() );
   }
 
