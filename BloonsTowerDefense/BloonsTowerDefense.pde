@@ -37,7 +37,7 @@ void setup(){
 void draw() {
   //@col
   //color debug (color in original map)
-    color col = pixels[mouseY * 600 + mouseX];
+    color col = pixels[mouseX * 600 + mouseY];
     float green = green(col);
     int averageGreenCol = averageGreenCol();
   //@colEnd
@@ -50,7 +50,10 @@ void draw() {
   for (int i = 0; i < onScreen.size(); i++){
     onScreen.get(i).display();
     onScreen.get(i).move();
-    if (onScreen.get(i).stage == 14) onScreen.remove(i);
+    if (onScreen.get(i).stage == 14) {
+      onScreen.remove(i);
+      i--;
+    }
   }
   if (locked) {
     //@col
