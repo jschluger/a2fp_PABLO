@@ -69,6 +69,7 @@ void draw() {
   }
   for (int i = 0; i < towers.size(); i++) {
     towers.get(i).display();
+    towers.get(i).updateQueue();
   }
   if (locked) t.displayLocked();
   else t.display();
