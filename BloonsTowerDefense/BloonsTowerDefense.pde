@@ -54,10 +54,10 @@ void draw() {
   }
   if (locked) {
     //@col
-    if (green > 145 && green < 150) {
+    if (checkLoc()) {//(green > 145 && green < 150) {
       validLoc = true;
     }
-    else if (green < 145 && green > 137){
+    else {//if (green < 145 && green > 137){
       validLoc = false;
     }
     //@colEnd
@@ -84,6 +84,24 @@ void draw() {
   text( "avggreen:" + averageGreenCol, mouseX + 2, mouseY - 60);
   //@colEnd
 }
+
+  public boolean checkLoc() {
+    return(mouseX < 85 && mouseY < 245) ||
+          (mouseX < 300 && mouseY < 95) ||
+          (mouseX > 276 && mouseY > 95 && mouseX < 308 && mouseY < 121) ||
+          (mouseX > 298 && mouseY > 105 && mouseX < 502 && mouseY < 199) ||
+          (mouseX > 298 && mouseY > 105 && mouseX < 351 && mouseY < 417)|| 
+          (mouseX > 152 && mouseY > 165 && mouseX < 233 && mouseY < 405)||
+          (mouseX > 0 && mouseY > 318 && mouseX < 233 && mouseY < 405)||
+          (mouseX > 0 && mouseY > 318 && mouseX < 35 && mouseY < height)||
+          (mouseX > 0 && mouseY > 569 && mouseX < 590 && mouseY < height)||
+          (mouseX > 95 && mouseY > 468 && mouseX < 495 && mouseY < 500)||
+          (mouseX > 298 && mouseY > 405 && mouseX < 495 && mouseY < 500)||
+          
+          false;
+
+  }  
+
 
 void mouseClicked() {
   if (!locked && mouseX < 50 && mouseY < 50) {
