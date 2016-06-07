@@ -53,7 +53,7 @@ public class Tower {
 
  public void updateQueue() {
       for (Bloon b : BloonsTowerDefense.onScreen) {
-         if ( sqrt( pow(b.x - x, 2) + pow(b.y - y, 2)) < rad ) {
+         if ( sqrt( pow(b.x - x, 2) + pow(b.y - y, 2)) < rad/2 ) {
            killList.add( b );
          }
       }
