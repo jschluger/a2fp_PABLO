@@ -24,8 +24,14 @@ public class Tower {
   public void display() {
     fill(c);
     rect(x, y, 40, 40);
-    if ( killList.peek() != null && frameRate % 30 == 0) 
-      BloonsTowerDefense.onScreen.remove( killList.poll() );
+    if ( killList.peek() != null ) {
+      Bloon target = killList.poll();
+      Projectile dart = new Projectile(x + 20, y + 20, target);
+      dart.display();
+      BloonsTowerDefense.onScreen.remove( target );
+      
+      
+    }
   }
 
   public void displayLocked() {
@@ -47,10 +53,9 @@ public class Tower {
 
  public void updateQueue() {
       for (Bloon b : BloonsTowerDefense.onScreen) {
-         if ( sqrt( pow(b.x - x, 2) + pow(b.y - y, 2)) < rad )
-           killList.offer( b );
-           Projectile dart = new Projectile(x,y,b);
-           dart.display();
+         if ( sqrt( pow(b.x - x, 2) + pow(b.y - y, 2)) < rad ) {
+           killList.add( b );
+         }
       }
   }
 }//end class Tower

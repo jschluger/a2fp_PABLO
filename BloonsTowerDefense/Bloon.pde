@@ -1,4 +1,4 @@
-public class Bloon {
+public class Bloon implements Comparable{
   int health;
   int c;
   int x, y;
@@ -94,6 +94,18 @@ public class Bloon {
      }
      //stage 14 == dead
      
+  }
+  
+  public int compareTo(Object b) {
+    if (((Bloon) b).stage > stage) {
+      return -1;
+    }
+    else if (((Bloon) b).stage == stage) {
+      return 0;
+    }
+    else {
+      return 1;
+    }
   }
   
 }//end class Bloon
