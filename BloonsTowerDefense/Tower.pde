@@ -7,7 +7,7 @@ public class Tower {
   Queue<Bloon> killList;
 
   public Tower() {
-    rad = 150;
+    rad = 550;
     power = 1;
     x = 0;
     y = 0;

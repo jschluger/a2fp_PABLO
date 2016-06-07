@@ -27,8 +27,8 @@ public class Projectile {
   }
     
   public boolean checkHit() {
-      if ( (int)x == (int)target.x &&
-           (int)y == (int)target.y ) {
+      if ( abs(x - target.x ) < 1 &&
+            abs(x - target.x ) < 1){
           target.stage = 14;
           return true;
        }
