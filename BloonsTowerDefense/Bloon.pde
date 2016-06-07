@@ -4,6 +4,7 @@ public class Bloon implements Comparable{
   int x, y;
   float speed;
   int stage;
+  boolean marked;
   
   public Bloon() {
     setHealth(1);
@@ -11,6 +12,7 @@ public class Bloon implements Comparable{
     y = height / 2 - 15;
     speed = 1;
     stage = 0;
+    marked = false;
   }
   
   public Bloon(int hp) {

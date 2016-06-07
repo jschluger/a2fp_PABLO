@@ -1,5 +1,7 @@
 static ArrayList<Bloon> offScreen, onScreen;
 ArrayList<Tower> towers;
+ArrayList<Projectile> projects;
+
 int stage;
 boolean locked;
 static boolean validLoc; //validLoc for valid location;
@@ -11,6 +13,7 @@ void setup(){
   offScreen = new ArrayList<Bloon>();
   onScreen = new ArrayList<Bloon>();
   towers = new ArrayList<Tower>();
+  projects = new ArrayList<Projectile>();
   locked = false;
   t = new Tower();
   for (int i = 0; i < 15; i++)
@@ -62,6 +65,12 @@ void draw() {
     towers.get(i).display();
     towers.get(i).updateQueue();
   }
+  
+  for (int i = 0; i < projects.size(); i++) {
+    projects.get(i).display(); 
+  }
+  
+  
   if (locked) t.displayLocked();
   else t.display();
   

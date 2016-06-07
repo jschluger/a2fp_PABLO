@@ -27,8 +27,9 @@ public class Tower {
     if ( killList.peek() != null ) {
       Bloon target = killList.poll();
       Projectile dart = new Projectile(x + 20, y + 20, target);
-      dart.display();
-      BloonsTowerDefense.onScreen.remove( target );
+      projects.add( dart );
+      
+      //BloonsTowerDefense.onScreen.remove( target );
       
       
     }
@@ -53,8 +54,9 @@ public class Tower {
 
  public void updateQueue() {
       for (Bloon b : BloonsTowerDefense.onScreen) {
-         if ( sqrt( pow(b.x - x, 2) + pow(b.y - y, 2)) < rad/2 ) {
+         if ( sqrt( pow(b.x - x, 2) + pow(b.y - y, 2)) < rad/2  && ! b.marked ) {
            killList.add( b );
+           b.marked = true;
          }
       }
   }

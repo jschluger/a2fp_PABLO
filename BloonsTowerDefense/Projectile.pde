@@ -1,18 +1,31 @@
 public class Projectile {
   
   PImage photo = loadImage("dart.png");
-  int x,y,tarx,tary;
+  float x,y;
+  Bloon target;
   
   Projectile(int x, int y, Bloon tar) { // x,y = tower, tarx,tary = target coor
     photo = loadImage("dart.png");
     photo.resize(20,20);
     this.x = x;
     this.y = y;
-    this.tarx = tar.x;
-    this.tary = tar.y;
+    target = tar;
   }
   
   void display() {
+    fill(0);
+    ellipse(x,y,5,10);
+    move();
     //image(photo,x,y);
+  }
+  
+  public void move() {
+    float vectorLen = sqrt( pow(x - target.x, 2) + pow(y - target.y, 2) );
+    x += (target.x - x ) / vectorLen;
+    y += (target.y - y ) / vectorLen;
+    
+    
+    
+    
   }
 }
