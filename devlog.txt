@@ -13,12 +13,23 @@ Team Pablo's . . .
                                               \______/ 
 
 =========================================================
-2016-06-03:
-Team:
+2016-06-06:
+Manish: Added basic killing method/detection of bloons - no animation yet
+Richard: Created a function that allows user to place turret IFF valid location
+         Created projectile class for turret attack (*bugs*)
+Jack: Added conditionals to detect valid/invalid location for tower placement
 
-Manish: 
-Jack: 
-Richard:
+=========================================================
+2016-06-04 - 2016-06-05:
+Team: Discussed how to detect colors in image
+
+Richard: Made radius of tower change color (green/red) depending on location
+
+=========================================================
+2016-06-03:
+Manish: Cleared remaining errors of dragging tower
+Jack: Started to test different bloon types - based on hp and speed
+Richard: Added diagnostic tools to locate coordinates on map, for accurate movement
 
 =========================================================
 2016-06-02:
