@@ -24,7 +24,7 @@ public class Tower {
   public void display() {
     fill(c);
     rect(x, y, 40, 40);
-    if ( killList.peek() != null ) 
+    if ( killList.peek() != null && frameRate % 30 == 0) 
       BloonsTowerDefense.onScreen.remove( killList.poll() );
   }
 
@@ -49,8 +49,6 @@ public class Tower {
       for (Bloon b : BloonsTowerDefense.onScreen) {
          if ( sqrt( pow(b.x - x, 2) + pow(b.y - y, 2)) < rad )
            killList.offer( b );
-      }
-      
-    
+      }     
   }
 }//end class Tower
