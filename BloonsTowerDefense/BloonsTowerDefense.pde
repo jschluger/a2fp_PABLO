@@ -93,7 +93,10 @@ void draw() {
           (mouseX > 0 && mouseY > 318 && mouseX < 35 && mouseY < height)||
           (mouseX > 0 && mouseY > 569 && mouseX < 590 && mouseY < height)||
           (mouseX > 95 && mouseY > 468 && mouseX < 495 && mouseY < 500)||
-          (mouseX > 298 && mouseY > 405 && mouseX < 495 && mouseY < 500)
+          (mouseX > 298 && mouseY > 405 && mouseX < 495 && mouseY < 500) || 
+          (mouseX > 358 && mouseY > 0 && mouseX < 588 && mouseY < 35) || 
+          (mouseX > 570 && mouseY > 0 && mouseX < 588 && mouseY < height) || 
+          (mouseX > 410 && mouseY > 265 && mouseX < 588 && mouseY < 340) 
           
           );
   }  
