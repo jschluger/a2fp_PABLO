@@ -29,7 +29,7 @@ public class Projectile {
     public boolean checkHit() {
 	if ( abs(x - target.x ) < 1 &&
 	     abs(x - target.x ) < 1){
-	    target.stage = 14;
+	    target.setHealth( target.health - 1 );
 	    return true;
 	}
 	else return false;

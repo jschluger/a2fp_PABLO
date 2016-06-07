@@ -39,7 +39,7 @@ void setup(){
 void draw() {
   
     //adding the bloons one at a time to the screen
-    if (! offScreen.isEmpty() && frameCount % 60 == 0) {
+    if (! offScreen.isEmpty() && frameCount % 10 == 0) {
 	onScreen.add( offScreen.remove(0) );
     }
     background(map);

@@ -21,14 +21,18 @@ public class Bloon implements Comparable{
     }
 
     public void setHealth(int hp) {
-	health = hp;
-	if (health == 1)
-	    c = color(255,0,0);
-	else if (health == 2)
-	    c = color(0,0,255);
-	else
-	    c = color(0,255,0);
-	speed = hp;
+	    if (hp == 0) stage = 14;
+      else { 
+        health = hp;
+	      if (health == 1)
+	        c = color(255,0,0);
+	      else if (health == 2)
+	        c = color(0,0,255);
+	      else
+	        c = color(0,255,0);
+	      speed = hp;
+        marked = false;
+      }
     }
     
     public void display() {

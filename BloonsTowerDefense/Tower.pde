@@ -4,15 +4,19 @@ public class Tower {
     int rad;
     int power;
     int c, x, y;
-    Queue<Bloon> killList;
-
+    PriorityQueue<Bloon> killList;
+    int fireRate;
+    int fired;
+    
     public Tower() {
-	rad = 550;
+	rad = 150;
 	power = 1;
 	x = 0;
 	y = 0;
 	c = color(random(255), random(255), random(255));
 	killList = new PriorityQueue<Bloon>();
+	fireRate = 60;
+	fired = 60;
     }
 
     public Tower(int r, int p) {
@@ -24,14 +28,13 @@ public class Tower {
     public void display() {
 	fill(c);
 	rect(x, y, 40, 40);
-	if ( killList.peek() != null ) {
+	fired++;
+	
+	if ( killList.peek() != null && fired > fireRate) {
 	    Bloon target = killList.poll();
 	    Projectile dart = new Projectile(x + 20, y + 20, target);
 	    projects.add( dart );
-      
-	    //BloonsTowerDefense.onScreen.remove( target );
-      
-      
+	    fired = 0;
 	}
     }
 
