@@ -45,10 +45,12 @@ public class Tower {
   }
   
 
-  public void updateQueue() {
+ public void updateQueue() {
       for (Bloon b : BloonsTowerDefense.onScreen) {
          if ( sqrt( pow(b.x - x, 2) + pow(b.y - y, 2)) < rad )
            killList.offer( b );
-      }     
+           Projectile dart = new Projectile(x,y,b);
+           dart.display();
+      }
   }
 }//end class Tower

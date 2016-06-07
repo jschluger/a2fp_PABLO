@@ -1,7 +1,8 @@
 public class Bloon {
   int health;
   int c;
-  float x, y, speed;
+  int x, y;
+  float speed;
   int stage;
   
   public Bloon() {
