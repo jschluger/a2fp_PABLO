@@ -103,14 +103,14 @@ public class Bloon implements Comparable{
     }
   
     public int compareTo(Object b) {
-	if (((Bloon) b).stage > stage) {
-	    return -1;
+	if (((Bloon) b).health > health) {
+	    return 1;
 	}
-	else if (((Bloon) b).stage == stage) {
+	else if (((Bloon) b).health == health) {
 	    return 0;
 	}
 	else {
-	    return 1;
+	    return -1;
 	}
     }
   
