@@ -21,11 +21,20 @@ public class Projectile {
   
   public void move() {
     float vectorLen = sqrt( pow(x - target.x, 2) + pow(y - target.y, 2) );
-    x += (target.x - x ) / vectorLen;
-    y += (target.y - y ) / vectorLen;
-    
-    
-    
+    x += (target.x - x ) * 4 / vectorLen;
+    y += (target.y - y ) * 4 / vectorLen;
     
   }
+    
+  public boolean checkHit() {
+      if ( (int)x == (int)target.x &&
+           (int)y == (int)target.y ) {
+          target.stage = 14;
+          return true;
+       }
+       else return false;
+      
+    }
+    
+    
 }

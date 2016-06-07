@@ -67,7 +67,10 @@ void draw() {
   }
   
   for (int i = 0; i < projects.size(); i++) {
-    projects.get(i).display(); 
+      if ( projects.get(i).checkHit() ) {
+       projects.remove(i--);
+      }
+      else projects.get(i).display(); 
   }
   
   
