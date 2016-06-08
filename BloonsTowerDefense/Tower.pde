@@ -30,11 +30,14 @@ public class Tower {
     rect(x, y, 40, 40);
     fired++;
 	
-    if ( killList.peek() != null && fired > fireRate) {
-	    Bloon target = killList.poll();
-	    Projectile dart = new Projectile(x + 20, y + 20, target);
-	    projects.add( dart );
-	    fired = 0;
+    if ( killList.peek() != null) {
+      Bloon target = killList.poll();
+      if (fired > fireRate && sqrt(Math.pow(target.x-x,2)+Math.pow(target.y-y,2)) < rad/2) {
+	      
+	      Projectile dart = new Projectile(x + 20, y + 20, target);
+	      projects.add( dart );
+	      fired = 0;
+
     }
   }
 
