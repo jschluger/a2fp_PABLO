@@ -13,6 +13,12 @@ Team Pablo's . . .
                                               \______/ 
 
 =========================================================
+2016-06-07:
+Manish and Richard: Fixed bugs that made program crash and resized projectile,
+                    made bloons comparable to be utilized in PriorityQueue and
+		    fixed radius of towers.
+Jack: Preliminary shooting of bloons with animation
+=========================================================
 2016-06-06:
 Manish: Added basic killing method/detection of bloons - no animation yet
 Richard: Created a function that allows user to place turret IFF valid location
