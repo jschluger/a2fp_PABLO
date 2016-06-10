@@ -87,7 +87,7 @@ void draw() {
 public boolean checkLoc() {
   boolean nearTowers = true; //checks if there are turrets on the spot
   for (int i = 0; i < towers.size(); i++) {
-    if (Math.sqrt((Math.pow(towers.get(i).x - t.x,2)) + (Math.pow(towers.get(i).y - t.y,2))) < 40) {
+    if (sqrt((pow(towers.get(i).x - t.x,2)) + (pow(towers.get(i).y - t.y,2))) < 40) {
 	    nearTowers = false;
 	    break;
     }
@@ -109,7 +109,6 @@ public boolean checkLoc() {
                           (mouseX > 358 && mouseY > 0 && mouseX < 588 && mouseY < 35) || 
                           (mouseX > 570 && mouseY > 0 && mouseX < 588 && mouseY < height) || 
                           (mouseX > 410 && mouseY > 265 && mouseX < 588 && mouseY < 340) 
-          
                           );
 }  
 
@@ -129,5 +128,4 @@ void mousePressed() {
     t = new Tower();
   }
   locked = false;
-
 }
