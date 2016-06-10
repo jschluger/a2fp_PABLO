@@ -1,0 +1,38 @@
+Crucial Jobs:
+- placing turrets
+- projectiles
+
+Core functionality:
+- bloons should move along paths, which the user can choose at the begining of the game
+- turrets should target bloons in their proximity and then kill through prioriy
+- user should be able to buy turrets and place them on valid locations on the map
+- hp
+- money
+
+Extras:
+- stronger bloons
+- better turrets (upgrades)
+- user can change what priority of enemies to be killed is based on
+- other maps
+
+Priority/Prerequisite Order:
+DONE:
+Bloon movement -> Turret Placement -> Turret Attacks (Fundamental)
+
+NOT DONE:
+HP/MONEY -> Images/Graphics
+
+Tasks that can be delegated:
+- turret/bloon variety (Part of Extras)
+- hp
+- money
+
+Collaborative Stuff:
+- how priority queue actually works (agreement)
+
+Timeline:
+1. Find a plausible way to place turrets (whether through recreation of the map or other means)
+2. Make projectiles
+3. Finish up ArrayPriorityQueue
+4. Hp and Money System
+5. Expand on Turrets!!!
