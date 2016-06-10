@@ -37,7 +37,7 @@ public class Tower {
 	      Projectile dart = new Projectile(x + 20, y + 20, target);
 	      projects.add( dart );
 	      fired = 0;
-
+      }
     }
   }
 
