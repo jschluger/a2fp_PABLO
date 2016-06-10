@@ -9,7 +9,7 @@ public class Tower {
   int fired;
     
   public Tower() {
-    rad = 150;
+    rad = 700;
     power = 1;
     x = 0;
     y = 0;
@@ -32,8 +32,10 @@ public class Tower {
 	
     if ( killList.peek() != null) {
       Bloon target = killList.poll();
-      if (fired > fireRate && sqrt(Math.pow(target.x-x,2)+Math.pow(target.y-y,2)) < rad/2) {
-	      
+      if (!target.marked && target.health > 0 && fired > fireRate && 
+          sqrt(pow(target.x-x,2)+pow(target.y-y,2)) <= rad/2) 
+      {
+  	    target.marked = true;
 	      Projectile dart = new Projectile(x + 20, y + 20, target);
 	      projects.add( dart );
 	      fired = 0;
@@ -62,7 +64,6 @@ public class Tower {
     for (Bloon b : BloonsTowerDefense.onScreen) {
 	    if ( sqrt( pow(b.x - x, 2) + pow(b.y - y, 2)) < rad/2  && ! b.marked ) {
         killList.add( b );
-        b.marked = true;
 	    }
     }
   }

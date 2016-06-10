@@ -27,8 +27,8 @@ public class Projectile {
   }
     
   public boolean checkHit() {
-    if ( abs(x - target.x ) < 1 &&
-         abs(x - target.x ) < 1){
+    if ( abs(x - target.x ) < 4 &&
+         abs(x - target.x ) < 4){
 	    target.setHealth( target.health - 1 );
 	    return true;
     }
