@@ -7,16 +7,23 @@ public class Tower {
   PriorityQueue<Bloon> killList;
   int fireRate;
   int fired;
+  boolean placed;
+  float angle;
+  PImage photo;
+  boolean selected = false;
     
   public Tower() {
     rad = 700;
     power = 1;
     x = 0;
     y = 0;
-    c = color(random(255), random(255), random(255));
     killList = new PriorityQueue<Bloon>();
     fireRate = 60;
     fired = 60;
+    fill(c);
+    photo = loadImage("Dart_Monkey.png");
+    photo.resize(40,40);
+    image(photo,x+20,y+20);
   }
 
   public Tower(int r, int p) {
@@ -26,15 +33,18 @@ public class Tower {
   }
 
   public void display() {
-    fill(c);
-    rect(x, y, 40, 40);
     fired++;
+    if (selected) {
+      displaySelected();
+    }
+    faceAngle();
 	
     if ( killList.peek() != null) {
       Bloon target = killList.poll();
       if (!target.marked && target.health > 0 && fired > fireRate && 
           sqrt(pow(target.x-x,2)+pow(target.y-y,2)) <= rad/2) 
       {
+        faceTarget(target);
   	    target.marked = true;
 	      Projectile dart = new Projectile(x + 20, y + 20, target);
 	      projects.add( dart );
@@ -55,8 +65,13 @@ public class Tower {
     //@colEnd
     ellipse(x + 20, y + 20, rad, rad);
     
-    fill(c);
-    rect(x, y, 40, 40);
+    image(photo,x+20,y+20);
+    placed = true;
+  }
+  
+  void displaySelected() {
+    fill(color(0,255,0),100);
+    ellipse(x + 20, y + 20, rad, rad);
   }
   
 
@@ -67,4 +82,38 @@ public class Tower {
 	    }
     }
   }
+  
+  void faceTarget(Bloon tar) {
+    if (x - tar.x == 0) {
+      pushMatrix();
+      translate(x+20,y+20);
+      if (y - tar.y < 0) {
+        angle = radians(90);
+        rotate(angle);
+      }
+      else {
+        angle = radians(270);
+        rotate(angle);
+      }
+      image(photo,-20,-20);
+      popMatrix();
+    }
+    else {
+      pushMatrix();
+      translate(x+20,y+20);
+      angle = PI + atan2(tar.x,tar.y);
+      rotate(angle);
+      image(photo,-20,-20);
+      popMatrix();
+    }
+  }
+  
+  void faceAngle() {
+      pushMatrix();
+      translate(x+20,y+20);
+      rotate(-angle);
+      image(photo,-20,-20);
+      popMatrix();
+  }
+  
 }//end class Tower

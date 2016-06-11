@@ -6,6 +6,7 @@ int stage;
 boolean locked;
 static boolean validLoc; //validLoc for valid location;
 Tower t;
+int ID = -1; //ID of tower in ArrayList towers
 int xOffset, yOffset;
 PImage map;
 
@@ -77,6 +78,9 @@ void draw() {
   if (locked) t.displayLocked();
   else t.display();
   
+  //SELECTED
+  if (ID >= 0) towers.get(ID).displaySelected();
+  
   // coordinate debug
   ellipse( mouseX, mouseY, 2, 2 );
   fill(color(0,0,0));
@@ -117,7 +121,22 @@ void mouseClicked() {
   if (!locked && mouseX < 50 && mouseY < 50) {
     locked = true;
   }
-  
+  float shortest = Integer.MAX_VALUE;
+  boolean selected = false;
+  for (int i = 0; i < towers.size(); i++) {
+    float dist = dist(mouseX,mouseY,towers.get(i).x,towers.get(i).y);
+    if (dist < 20 && dist < shortest) {
+      shortest = dist;
+      selected = true;
+      ID = i;
+    }
+  }
+  if (selected != true) {
+    ID = -1; //nothing selected
+  }
+  else {
+    towers.get(ID).selected = true;
+  }
 }
 
 void mousePressed() {

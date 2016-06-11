@@ -1,6 +1,6 @@
 public class Projectile {
   
-  PImage photo = loadImage("dart.png");
+  PImage photo;
   float x,y;
   Bloon target;
   
