@@ -48,7 +48,7 @@ public class Projectile {
   void faceTarget() {
     if (x - target.x == 0) {
       pushMatrix();
-      translate(x+20,y+20);
+      translate(x+7.5,y+7.5);
       if (y - target.y < 0) {
         angle = radians(90);
         rotate(angle);
@@ -57,24 +57,24 @@ public class Projectile {
         angle = radians(270);
         rotate(angle);
       }
-      image(photo,-20,-20);
+      image(photo,-7.5,-7.5);
       popMatrix();
     }
     else {
       pushMatrix();
-      translate(x+20,y+20);
+      translate(x+7.5,y+7.5);
       angle = PI + atan2(target.x,target.y);
       rotate(angle);
-      image(photo,-20,-20);
+      image(photo,-7.5,-7.5);
       popMatrix();
     }
   }
   
   void faceAngle() {
     pushMatrix();
-    translate(x+20,y+20);
-    rotate(-angle);
-    image(photo,-20,-20);
+    translate(x+7.5,y+7.5);
+    rotate(angle);
+    image(photo,-7.5,-7.5);
     popMatrix();
   }
     
