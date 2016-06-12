@@ -7,7 +7,7 @@ public class Projectile {
   
   Projectile(int x, int y, Bloon tar, float sped) { // x,y = tower, tarx,tary = target coor
     photo = loadImage("dart.png");
-    photo.resize(5,5);
+    photo.resize(15,15);
     this.x = x;
     this.y = y;
     speed = sped;
@@ -16,7 +16,8 @@ public class Projectile {
   
   void display() {
     fill(0);
-    ellipse(x,y,5,10);
+    image(photo, x, y);
+    //ellipse(x,y,5,10);
     move();
     //image(photo,x,y);
   }

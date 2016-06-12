@@ -26,8 +26,10 @@ public class Bloon implements Comparable{
         c = color(255,0,0);
       else if (health == 2)
         c = color(0,0,255);
-      else
+      else if (health == 3)
         c = color(0,255,0);
+      else 
+        c = color(255,0,221);
       speed = hp;
       marked = false;
   }

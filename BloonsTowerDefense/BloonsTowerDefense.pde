@@ -25,8 +25,8 @@ void setup(){
   choices[0] = new Monkey();
   choices[1] = new SuperMonkey();
   choice = -1;
-  for (int i = 0; i < 15; i++)
-    offScreen.add( new Bloon( (int)(Math.random()* 3) + 1) );
+  for (int i = 0; i < 50; i++)
+    offScreen.add( new Bloon( (int)(Math.random()* 4) + 1) );
   size(800, 600);
   errorTime = -1;
 
