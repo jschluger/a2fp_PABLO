@@ -190,12 +190,10 @@ void mouseClicked() {
 }
 
 public void selectTower() {
-  float shortest = Integer.MAX_VALUE;
   boolean selected = false;
   for (int i = 0; i < towers.size(); i++) {
     float dist = dist(mouseX,mouseY,towers.get(i).x + 20, towers.get(i).y + 20);
-    if (dist < 30 && dist <= shortest) {
-      shortest = dist;
+    if (dist < 30) {
       selected = true;
       ID = i;
     }
