@@ -19,7 +19,7 @@ void setup(){
   towers = new ArrayList<Tower>();
   projects = new ArrayList<Projectile>();
   locked = false;
-  t = new Tower();
+  t = new Monkey();
   for (int i = 0; i < 15; i++)
     offScreen.add( new Bloon( (int)(Math.random()* 3) + 1) );
   size(800, 600);
@@ -183,7 +183,7 @@ void mousePressed() {
     if (validLoc) {
 	    towers.add(t);
     }
-    t = new Tower();
+    t = new Monkey();
   }
   locked = false;
 }

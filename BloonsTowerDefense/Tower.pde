@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Tower {
+public abstract class Tower {
   int rad;
   int power;
   int c, x, y;
@@ -11,26 +11,7 @@ public class Tower {
   float angle;
   PImage photo;
   boolean selected = false;
-    
-  public Tower() {
-    rad = 700;
-    power = 1;
-    x = 601;
-    y = 205;
-    killList = new PriorityQueue<Bloon>();
-    fireRate = 60;
-    fired = 60;
-    fill(c);
-    photo = loadImage("Dart_Monkey.png");
-    photo.resize(40,40);
-    image(photo,x+20,y+20);
-  }
-
-  public Tower(int r, int p) {
-    this();
-    rad = r;
-    power = p;
-  }
+ 
 
   public void display() {
     fired++;
