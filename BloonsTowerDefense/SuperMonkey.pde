@@ -14,6 +14,6 @@ public class SuperMonkey extends Tower {
     photo.resize(40,40);
     image(photo,x+20,y+20); 
      
-   }
+  }
   
 }

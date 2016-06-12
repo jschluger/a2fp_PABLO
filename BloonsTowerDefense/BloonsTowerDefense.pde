@@ -60,7 +60,7 @@ void draw() {
 } // end draw()
 
 public void loadOnScreen() {
- //adding the bloons one at a time to the screen
+  //adding the bloons one at a time to the screen
   if (! offScreen.isEmpty() && frameCount % 10 == 0) {
     onScreen.add( offScreen.remove(0) );
   } 
@@ -96,17 +96,17 @@ public void placeTowers() {
   }
   
   for (int i = 0; i < choices.length; i++) {
-     if (i == choice) choices[i].displayLocked();
-     else choices[i].display();
+    if (i == choice) choices[i].displayLocked();
+    else choices[i].display();
   }
 }
 
 public void displayTowers() {
- for (int i = 0; i < towers.size(); i++) {
+  for (int i = 0; i < towers.size(); i++) {
     if (i == ID) towers.get(ID).displaySelected();
     towers.get(i).display();
     towers.get(i).updateQueue();
-    }   
+  }   
 }
 
 public void displayProjectiles() {
@@ -167,22 +167,22 @@ public boolean checkLoc() {
 
 void mouseClicked() {
   if (!locked && mouseX > 600 && mouseY > 205
-              && mouseX < 642 && mouseY < 248
-              ) {
+      && mouseX < 642 && mouseY < 248
+      ) {
     if (money >= choices[0].cost) {
       locked = true;
       choice = 0;
     }
-      else errorTime = 200;
+    else errorTime = 200;
   }
   else if (!locked && mouseX > 651 && mouseY > 205
-              && mouseX < 691 && mouseY < 248
-              ) {
+           && mouseX < 691 && mouseY < 248
+           ) {
     if (money >= choices[1].cost) {
       locked = true;
       choice = 1;
     }
-      else errorTime = 200;
+    else errorTime = 200;
   }
   else {
     selectTower();
@@ -190,19 +190,19 @@ void mouseClicked() {
 }
 
 public void selectTower() {
-    float shortest = Integer.MAX_VALUE;
-    boolean selected = false;
-    for (int i = 0; i < towers.size(); i++) {
-      float dist = dist(mouseX,mouseY,towers.get(i).x + 20, towers.get(i).y + 20);
-      if (dist < 30 && dist <= shortest) {
-        shortest = dist;
-        selected = true;
-        ID = i;
-      }
+  float shortest = Integer.MAX_VALUE;
+  boolean selected = false;
+  for (int i = 0; i < towers.size(); i++) {
+    float dist = dist(mouseX,mouseY,towers.get(i).x + 20, towers.get(i).y + 20);
+    if (dist < 30 && dist <= shortest) {
+      shortest = dist;
+      selected = true;
+      ID = i;
     }
-    if (selected != true) {
-      ID = -1; //nothing selected
-    }  
+  }
+  if (selected != true) {
+    ID = -1; //nothing selected
+  }  
 }
 
 
@@ -212,11 +212,11 @@ void mousePressed() {
 	    towers.add(choices[choice]);
       money -= choices[choice].cost;
     }
-     if (choice == 0)
-        choices[0] = new Monkey();
+    if (choice == 0)
+      choices[0] = new Monkey();
     if (choice == 1)
-        choices[1] = new SuperMonkey();
-     choice = -1;   
+      choices[1] = new SuperMonkey();
+    choice = -1;   
   }
   locked = false;
 }

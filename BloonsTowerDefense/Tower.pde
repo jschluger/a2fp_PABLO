@@ -16,10 +16,10 @@ public abstract class Tower {
     fired++;
     faceAngle();
     attack();  
-}
+  }
   
   public void attack() {
-   if ( killList.peek() != null) {
+    if ( killList.peek() != null) {
       Bloon target = killList.poll();
       if (!target.marked && target.health > 0 && fired > fireRate && 
           sqrt(pow(target.x-x,2)+pow(target.y-y,2)) <= rad/2) 
@@ -51,7 +51,7 @@ public abstract class Tower {
   
   void displaySelected() {
     fill(color(0,255,0),100);
-    ellipse(x  + 20 , y + 20, rad, rad);
+    ellipse(x + 20 , y + 20, rad, rad);
   }
   
 
@@ -89,11 +89,11 @@ public abstract class Tower {
   }
   
   void faceAngle() {
-      pushMatrix();
-      translate(x+20,y+20);
-      rotate(-angle);
-      image(photo,-20,-20);
-      popMatrix();
+    pushMatrix();
+    translate(x+20,y+20);
+    rotate(-angle);
+    image(photo,-20,-20);
+    popMatrix();
   }
   
 }//end class Tower
