@@ -6,7 +6,8 @@ int health, money;
 int stage;
 boolean locked;
 static boolean validLoc; //validLoc for valid location;
-Tower t;
+Tower[] choices;
+int choice; //which tower you are buying
 int ID = -1; //ID of tower in ArrayList towers
 int xOffset, yOffset;
 PImage map;
@@ -19,7 +20,10 @@ void setup(){
   towers = new ArrayList<Tower>();
   projects = new ArrayList<Projectile>();
   locked = false;
-  t = new Monkey();
+  choices = new Tower[2];
+  choices[0] = new Monkey();
+  choices[1] = new SuperMonkey();
+  choice = -1;
   for (int i = 0; i < 15; i++)
     offScreen.add( new Bloon( (int)(Math.random()* 3) + 1) );
   size(800, 600);
@@ -37,8 +41,9 @@ void setup(){
   for (int i = 0; i < towers.size(); i++) {
     towers.get(i).display();
   }
-  t.display();
+  for (Tower t : choices) t.display();
 }// end setup()
+
 
 void draw() {
   background(map);
@@ -50,7 +55,6 @@ void draw() {
   displayText();
 
 } // end draw()
-
 
 public void loadOnScreen() {
  //adding the bloons one at a time to the screen
@@ -85,12 +89,14 @@ public void placeTowers() {
     else {
       validLoc = false;
     }
-    t.x = mouseX - 20; 
-    t.y = mouseY - 20;
+    choices[choice].x = mouseX - 20; 
+    choices[choice].y = mouseY - 20;
   }
   
-  if (locked) t.displayLocked();
-  else t.display();
+  for (int i = 0; i < choices.length; i++) {
+     if (i == choice) choices[i].displayLocked();
+     else choices[i].display();
+  }
 }
 
 public void displayTowers() {
@@ -126,7 +132,7 @@ public void displayText() {
 public boolean checkLoc() {
   boolean nearTowers = true; //checks if there are turrets on the spot
   for (int i = 0; i < towers.size(); i++) {
-    if (sqrt((pow(towers.get(i).x - t.x,2)) + (pow(towers.get(i).y - t.y,2))) < 40) {
+    if (dist(towers.get(i).x, towers.get(i).y, choices[choice].x,  choices[choice].y) < 40) {
 	    nearTowers = false;
 	    break;
     }
@@ -157,6 +163,13 @@ void mouseClicked() {
               && mouseX < 642 && mouseY < 248
               ) {
     locked = true;
+    choice = 0;
+  }
+  else if (!locked && mouseX > 651 && mouseY > 205
+              && mouseX < 691 && mouseY < 248
+              ) {
+    locked = true;
+    choice = 1;
   }
   else {
     selectTower();
@@ -183,11 +196,14 @@ public void selectTower() {
 void mousePressed() {
   if (locked) {
     if (validLoc) {
-	    towers.add(t);
-      money -= t.cost;
+	    towers.add(choices[choice]);
+      money -= choices[choice].cost;
     }
-    t = new Monkey();
-    
+     if (choice == 0)
+        choices[0] = new Monkey();
+    if (choice == 1)
+        choices[1] = new SuperMonkey();
+     choice = -1;   
   }
   locked = false;
 }

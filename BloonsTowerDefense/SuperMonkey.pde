@@ -1,0 +1,18 @@
+public class SuperMonkey extends Tower {
+   
+  public SuperMonkey() {
+    rad = 700;
+    cost = 2500;
+    x = 651;
+    y = 205;
+    killList = new PriorityQueue<Bloon>();
+    fireRate = 60;
+    fired = fireRate;
+    fill(c);
+    photo = loadImage("Super_Monkey.png");
+    photo.resize(40,40);
+    image(photo,x+20,y+20); 
+     
+   }
+  
+}
