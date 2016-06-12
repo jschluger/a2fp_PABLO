@@ -1,7 +1,7 @@
 public class SuperMonkey extends Tower {
    
   public SuperMonkey() {
-    rad = 700;
+    rad = 600;
     cost = 2;
     x = 651;
     y = 205;

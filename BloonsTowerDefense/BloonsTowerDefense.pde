@@ -168,7 +168,7 @@ public void displayText() {
     text( round, 686, 123);
   
   //roundOver
-  if (roundOver && !gameOver)
+  if (roundOver && round < NUM_ROUNDS)
     text( "LOADING", 686, 123);
 }
 
