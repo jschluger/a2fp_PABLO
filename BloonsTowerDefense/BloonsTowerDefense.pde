@@ -118,7 +118,9 @@ public boolean checkLoc() {
 
 
 void mouseClicked() {
-  if (!locked && mouseX < 50 && mouseY < 50) {
+  if (!locked && mouseX > 600 && mouseY > 205
+              && mouseX < 642 && mouseY < 248
+              ) {
     locked = true;
   }
   float shortest = Integer.MAX_VALUE;

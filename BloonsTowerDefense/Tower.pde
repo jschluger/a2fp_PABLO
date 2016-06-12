@@ -15,8 +15,8 @@ public class Tower {
   public Tower() {
     rad = 700;
     power = 1;
-    x = 0;
-    y = 0;
+    x = 601;
+    y = 205;
     killList = new PriorityQueue<Bloon>();
     fireRate = 60;
     fired = 60;
