@@ -7,7 +7,7 @@ public class Projectile {
   float angle;
   
   Projectile(int x, int y, Bloon tar, float spd) { // x,y = tower, tarx,tary = target coor
-    photo = loadImage("dart.png");
+    photo = loadImage("ball.png");
     photo.resize(15,15);
     this.x = x;
     this.y = y;
