@@ -1,6 +1,10 @@
 static ArrayList<Bloon> offScreen, onScreen;
 ArrayList<Tower> towers;
 ArrayList<Projectile> projects;
+boolean gameOver;
+boolean roundOver;
+int round;
+final int NUM_ROUNDS = 3;
 
 static int health, money;
 int stage;
@@ -12,8 +16,13 @@ int ID = -1; //ID of tower in ArrayList towers
 int xOffset, yOffset;
 PImage map;
 int errorTime;
+int displayTime;
+int loadTime;
 
 void setup(){
+  gameOver = false;
+  roundOver = false;
+  round = 1;
   health = 150;
   money = 500;
   offScreen = new ArrayList<Bloon>();
@@ -25,10 +34,12 @@ void setup(){
   choices[0] = new Monkey();
   choices[1] = new SuperMonkey();
   choice = -1;
-  for (int i = 0; i < 50; i++)
+  for (int i = 0; i < round * 25; i++)
     offScreen.add( new Bloon( (int)(Math.random()* 4) + 1) );
   size(800, 600);
   errorTime = -1;
+  displayTime = 500;
+  loadTime = 500;
 
   //load map
   map = loadImage("map.png");
@@ -49,13 +60,16 @@ void setup(){
 
 void draw() {
   background(map);
-  loadOnScreen();
-  displayBloons();
-  displayTowers();
-  placeTowers();
-  displayProjectiles();
-  displayText();
-  displayErrors();
+  gameOver();
+  if (!gameOver) {
+    displayText();
+    loadOnScreen();
+    displayBloons();
+    displayTowers();
+    placeTowers();
+    displayProjectiles();
+    displayErrors();
+  }
 
 } // end draw()
 
@@ -79,6 +93,25 @@ public void displayBloons() {
     else {
       onScreen.get(i).display();
       onScreen.get(i).move(); 
+    }
+  }
+  
+  if (onScreen.size() == 0 && offScreen.size() == 0) {
+    roundOver = true;
+    loadTime--;
+    if (loadTime == 0) {
+      loadTime = 200; //reset for next round
+      roundOver = false;
+      round++;
+      if (round > NUM_ROUNDS) {
+        gameOver = true;
+        gameOver();
+        return;
+      }
+      else {
+        for (int i = 0; i < round * 25; i++)
+          offScreen.add( new Bloon( (int)(Math.random()* 4) + 1) );
+      }
     }
   }
 }
@@ -129,6 +162,14 @@ public void displayText() {
   
   //money
   text( money, 686, 48);
+  
+  //round
+  if (!roundOver)
+    text( round, 686, 123);
+  
+  //roundOver
+  if (roundOver && !gameOver)
+    text( "LOADING", 686, 123);
 }
 
 public void displayErrors() {
@@ -202,6 +243,18 @@ public void selectTower() {
   if (selected != true) {
     ID = -1; //nothing selected
   }  
+}
+
+void gameOver() {
+  if (gameOver && displayTime > 0) {
+    text("You have won!!!", 628, 500);
+    displayTime--;
+  }
+  else if (health < 0) {
+    gameOver = true;
+    text("GAME OVER", 628, 500);
+    displayTime--;
+  }
 }
 
 
