@@ -20,9 +20,7 @@ public class Bloon implements Comparable{
     setHealth(hp);
   }
 
-  public void setHealth(int hp) {
-    if (hp == 0) stage = 14;
-    else { 
+  public void setHealth(int hp) { 
       health = hp;
       if (health == 1)
         c = color(255,0,0);
@@ -32,7 +30,6 @@ public class Bloon implements Comparable{
         c = color(0,255,0);
       speed = hp;
       marked = false;
-    }
   }
     
   public void display() {

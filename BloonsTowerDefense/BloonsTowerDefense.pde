@@ -2,7 +2,7 @@ static ArrayList<Bloon> offScreen, onScreen;
 ArrayList<Tower> towers;
 ArrayList<Projectile> projects;
 
-int health;
+int health, money;
 int stage;
 boolean locked;
 static boolean validLoc; //validLoc for valid location;
@@ -13,6 +13,7 @@ PImage map;
 
 void setup(){
   health = 150;
+  money = 500;
   offScreen = new ArrayList<Bloon>();
   onScreen = new ArrayList<Bloon>();
   towers = new ArrayList<Tower>();
@@ -60,11 +61,18 @@ public void loadOnScreen() {
 
 public void displayBloons() {
   for (int i = 0; i < onScreen.size(); i++){
-    onScreen.get(i).display();
-    onScreen.get(i).move();
     if (onScreen.get(i).stage == 14) {
       health -= onScreen.remove(i).health;
       i--;
+    }
+    else if (onScreen.get(i).health <= 0) {
+      onScreen.remove(i);
+      money += 5;
+      i--;
+    }
+    else {
+      onScreen.get(i).display();
+      onScreen.get(i).move(); 
     }
   }
 }
@@ -112,6 +120,9 @@ public void displayText() {
   
   //health
   text( health, 686, 83);
+  
+  //money
+  text( money, 686, 48);
 }
 
 public boolean checkLoc() {
