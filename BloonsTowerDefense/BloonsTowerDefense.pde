@@ -51,8 +51,8 @@ void draw() {
   background(map);
   loadOnScreen();
   displayBloons();
-  placeTowers();
   displayTowers();
+  placeTowers();
   displayProjectiles();
   displayText();
   displayErrors();
