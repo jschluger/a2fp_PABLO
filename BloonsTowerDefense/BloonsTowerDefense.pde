@@ -2,6 +2,7 @@ static ArrayList<Bloon> offScreen, onScreen;
 ArrayList<Tower> towers;
 ArrayList<Projectile> projects;
 
+int health;
 int stage;
 boolean locked;
 static boolean validLoc; //validLoc for valid location;
@@ -11,6 +12,7 @@ int xOffset, yOffset;
 PImage map;
 
 void setup(){
+  health = 150;
   offScreen = new ArrayList<Bloon>();
   onScreen = new ArrayList<Bloon>();
   towers = new ArrayList<Tower>();
@@ -48,7 +50,7 @@ void draw() {
     onScreen.get(i).display();
     onScreen.get(i).move();
     if (onScreen.get(i).stage == 14) {
-	    onScreen.remove(i);
+	    health -= onScreen.remove(i).health;
 	    i--;
     }
   }
@@ -86,7 +88,8 @@ void draw() {
   fill(color(0,0,0));
   text( "x: " + mouseX + " y: " + mouseY, mouseX + 2, mouseY );
   
-}
+  text( health, 686, 83);
+} // end draw()
 
 public boolean checkLoc() {
   boolean nearTowers = true; //checks if there are turrets on the spot
