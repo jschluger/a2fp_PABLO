@@ -2,7 +2,7 @@ import java.util.*;
 
 public abstract class Tower {
   int rad;
-  int power;
+  int cost;
   int c, x, y;
   PriorityQueue<Bloon> killList;
   int fireRate;

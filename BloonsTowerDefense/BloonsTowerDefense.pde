@@ -182,8 +182,10 @@ void mousePressed() {
   if (locked) {
     if (validLoc) {
 	    towers.add(t);
+      money -= t.cost;
     }
     t = new Monkey();
+    
   }
   locked = false;
 }
