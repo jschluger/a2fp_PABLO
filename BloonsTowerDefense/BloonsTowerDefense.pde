@@ -22,7 +22,7 @@ int loadTime;
 void setup(){
   gameOver = false;
   roundOver = false;
-  round = 1;
+  round = 49;
   health = 150;
   money = 500;
   offScreen = new ArrayList<Bloon>();
@@ -34,8 +34,7 @@ void setup(){
   choices[0] = new Monkey();
   choices[1] = new SuperMonkey();
   choice = -1;
-  for (int i = 0; i < round * 25; i++)
-    offScreen.add( new Bloon( (int)(Math.random()* 4) + 1) );
+  loadOffScreen();
   size(800, 600);
   errorTime = -1;
   displayTime = 500;
@@ -73,6 +72,64 @@ void draw() {
 
 } // end draw()
 
+public void loadOffScreen() {
+  for (int i = 0; i < round * 25; i++)
+    if (round < 3) {
+      if (random(100) < 95)
+        offScreen.add( new Bloon(1) );
+      else 
+        offScreen.add( new Bloon(2) );
+    }
+    else if (round < 10) {
+      if (random(100) < 75)
+        offScreen.add( new Bloon(1) );
+      else if (random(100) < 15)
+        offScreen.add( new Bloon(2) );
+      else
+        offScreen.add( new Bloon(3) );
+    }
+    else if (round < 20) {
+      if (random(100) < 50)
+        offScreen.add( new Bloon(1) );
+      else if (random(100) < 30)
+        offScreen.add( new Bloon(2) );
+      else if (random(100) < 10)
+        offScreen.add( new Bloon(3) );
+      else
+        offScreen.add( new Bloon(4) );
+    }
+    else if (round < 30) {
+      if (random(100) < 35)
+        offScreen.add( new Bloon(1) );
+      else if (random(100) < 30)
+        offScreen.add( new Bloon(2) );
+      else if (random(100) < 20)
+        offScreen.add( new Bloon(3) );
+      else
+        offScreen.add( new Bloon(4) );
+    }
+    else if (round < 40) {
+      if (random(100) < 15)
+        offScreen.add( new Bloon(1) );
+      else if (random(100) < 30)
+        offScreen.add( new Bloon(2) );
+      else if (random(100) < 40)
+        offScreen.add( new Bloon(3) );
+      else
+        offScreen.add( new Bloon(4) );
+    }
+    else {
+      if (random(100) < 10)
+        offScreen.add( new Bloon(1) );
+      else if (random(100) < 15)
+        offScreen.add( new Bloon(2) );
+      else if (random(100) < 35)
+        offScreen.add( new Bloon(3) );
+      else
+        offScreen.add( new Bloon(4) );
+    }
+}
+
 public void loadOnScreen() {
   //adding the bloons one at a time to the screen
   if (! offScreen.isEmpty() && frameCount % (60 - round) == 0) {
@@ -108,8 +165,7 @@ public void displayBloons() {
       loadTime = 500; // reset loadTime
       roundOver = false;
       round++;
-      for (int i = 0; i < round * 25; i++)
-        offScreen.add( new Bloon( (int)(Math.random()* 4) + 1) );
+      loadOffScreen();
     }
   }
 }
