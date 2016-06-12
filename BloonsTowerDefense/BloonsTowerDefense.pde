@@ -196,6 +196,7 @@ public void selectTower() {
     if (dist < 30) {
       selected = true;
       ID = i;
+      break;
     }
   }
   if (selected != true) {
