@@ -81,7 +81,7 @@ public void loadOnScreen() {
 }
 
 public void displayBloons() {
-  for (int i = 0; i < onScreen.size(); i++){
+  for (int i = 0; i < onScreen.size(); i++) {
     if (onScreen.get(i).stage == 14) {
       health -= onScreen.remove(i).health;
       i--;
@@ -97,21 +97,19 @@ public void displayBloons() {
   }
   
   if (onScreen.size() == 0 && offScreen.size() == 0) {
+    if (round == NUM_ROUNDS) {
+      gameOver = true;
+      gameOver();
+      return;
+    }
     roundOver = true;
     loadTime--;
     if (loadTime == 0) {
-      loadTime = 200; //reset for next round
+      loadTime = 500; // reset loadTime
       roundOver = false;
       round++;
-      if (round > NUM_ROUNDS) {
-        gameOver = true;
-        gameOver();
-        return;
-      }
-      else {
-        for (int i = 0; i < round * 25; i++)
-          offScreen.add( new Bloon( (int)(Math.random()* 4) + 1) );
-      }
+      for (int i = 0; i < round * 25; i++)
+        offScreen.add( new Bloon( (int)(Math.random()* 4) + 1) );
     }
   }
 }
