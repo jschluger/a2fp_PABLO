@@ -37,59 +37,82 @@ void setup(){
     towers.get(i).display();
   }
   t.display();
-}
+}// end setup()
 
 void draw() {
-  
-  //adding the bloons one at a time to the screen
+  background(map);
+  loadOnScreen();
+  displayBloons();
+  placeTowers();
+  displayTowers();
+  displayProjectiles();
+  displayText();
+
+} // end draw()
+
+
+public void loadOnScreen() {
+ //adding the bloons one at a time to the screen
   if (! offScreen.isEmpty() && frameCount % 10 == 0) {
     onScreen.add( offScreen.remove(0) );
-  }
-  background(map);
+  } 
+}
+
+public void displayBloons() {
   for (int i = 0; i < onScreen.size(); i++){
     onScreen.get(i).display();
     onScreen.get(i).move();
     if (onScreen.get(i).stage == 14) {
-	    health -= onScreen.remove(i).health;
-	    i--;
+      health -= onScreen.remove(i).health;
+      i--;
     }
   }
+}
+
+public void placeTowers() {
   if (locked) {
     if (checkLoc()) { 
-	    validLoc = true;
+      validLoc = true;
     }
     else {
-	    validLoc = false;
+      validLoc = false;
     }
     t.x = mouseX - 20; 
     t.y = mouseY - 20;
   }
-  for (int i = 0; i < towers.size(); i++) {
-    towers.get(i).display();
-    towers.get(i).updateQueue();
-  }
-  
-  for (int i = 0; i < projects.size(); i++) {
-    if ( projects.get(i).checkHit() ) {
-	    projects.remove(i--);
-    }
-    else projects.get(i).display(); 
-  }
-  
   
   if (locked) t.displayLocked();
   else t.display();
-  
-  //SELECTED
+}
+
+public void displayTowers() {
+ for (int i = 0; i < towers.size(); i++) {
+    towers.get(i).display();
+    towers.get(i).updateQueue();
+    
+    //SELECTED
   if (ID >= 0) towers.get(ID).displaySelected();
-  
+  } 
+}
+
+public void displayProjectiles() {
+  for (int i = 0; i < projects.size(); i++) {
+    if ( projects.get(i).checkHit() ) {
+      projects.remove(i--);
+    }
+    else projects.get(i).display(); 
+  }
+}
+
+public void displayText() {
   // coordinate debug
   ellipse( mouseX, mouseY, 2, 2 );
   fill(color(0,0,0));
   text( "x: " + mouseX + " y: " + mouseY, mouseX + 2, mouseY );
   
+  //health
   text( health, 686, 83);
-} // end draw()
+}
 
 public boolean checkLoc() {
   boolean nearTowers = true; //checks if there are turrets on the spot
