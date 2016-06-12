@@ -38,19 +38,22 @@ public class Tower {
       displaySelected();
     }
     faceAngle();
-	
-    if ( killList.peek() != null) {
+    attack();  
+}
+  
+  public void attack() {
+   if ( killList.peek() != null) {
       Bloon target = killList.poll();
       if (!target.marked && target.health > 0 && fired > fireRate && 
           sqrt(pow(target.x-x,2)+pow(target.y-y,2)) <= rad/2) 
       {
         faceTarget(target);
-  	    target.marked = true;
-	      Projectile dart = new Projectile(x + 20, y + 20, target);
-	      projects.add( dart );
-	      fired = 0;
+        target.marked = true;
+        Projectile dart = new Projectile(x + 20, y + 20, target, 10);
+        projects.add( dart );
+        fired = 0;
       }
-    }
+    } 
   }
 
   public void displayLocked() {
