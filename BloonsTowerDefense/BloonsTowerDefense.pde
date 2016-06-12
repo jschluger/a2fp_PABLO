@@ -95,12 +95,10 @@ public void placeTowers() {
 
 public void displayTowers() {
  for (int i = 0; i < towers.size(); i++) {
+    if (i == ID) towers.get(ID).displaySelected();
     towers.get(i).display();
     towers.get(i).updateQueue();
-    
-    //SELECTED
-  if (ID >= 0) towers.get(ID).displaySelected();
-  } 
+    }   
 }
 
 public void displayProjectiles() {
@@ -160,23 +158,27 @@ void mouseClicked() {
               ) {
     locked = true;
   }
-  float shortest = Integer.MAX_VALUE;
-  boolean selected = false;
-  for (int i = 0; i < towers.size(); i++) {
-    float dist = dist(mouseX,mouseY,towers.get(i).x,towers.get(i).y);
-    if (dist < 20 && dist < shortest) {
-      shortest = dist;
-      selected = true;
-      ID = i;
-    }
-  }
-  if (selected != true) {
-    ID = -1; //nothing selected
-  }
   else {
-    towers.get(ID).selected = true;
+    selectTower();
   }
 }
+
+public void selectTower() {
+    float shortest = Integer.MAX_VALUE;
+    boolean selected = false;
+    for (int i = 0; i < towers.size(); i++) {
+      float dist = dist(mouseX,mouseY,towers.get(i).x + 20, towers.get(i).y + 20);
+      if (dist < 30 && dist <= shortest) {
+        shortest = dist;
+        selected = true;
+        ID = i;
+      }
+    }
+    if (selected != true) {
+      ID = -1; //nothing selected
+    }  
+}
+
 
 void mousePressed() {
   if (locked) {

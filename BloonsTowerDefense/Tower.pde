@@ -10,14 +10,9 @@ public abstract class Tower {
   boolean placed;
   float angle;
   PImage photo;
-  boolean selected = false;
- 
-
+  
   public void display() {
     fired++;
-    if (selected) {
-      displaySelected();
-    }
     faceAngle();
     attack();  
 }
@@ -49,13 +44,13 @@ public abstract class Tower {
     //@colEnd
     ellipse(x + 20, y + 20, rad, rad);
     
-    image(photo,x+20,y+20);
+    image(photo,x,y);
     placed = true;
   }
   
   void displaySelected() {
     fill(color(0,255,0),100);
-    ellipse(x + 20, y + 20, rad, rad);
+    ellipse(x  + 20 , y + 20, rad, rad);
   }
   
 

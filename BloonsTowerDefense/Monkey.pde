@@ -1,7 +1,7 @@
 public class Monkey extends Tower {
    
   public Monkey() {
-    rad = 700;
+    rad = 100;
     cost = 250;
     x = 601;
     y = 205;
