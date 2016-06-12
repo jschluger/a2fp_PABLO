@@ -4,7 +4,7 @@ ArrayList<Projectile> projects;
 boolean gameOver;
 boolean roundOver;
 int round;
-final int NUM_ROUNDS = 3;
+final int NUM_ROUNDS = 50;
 
 static int health, money;
 int stage;
@@ -22,7 +22,7 @@ int loadTime;
 void setup(){
   gameOver = false;
   roundOver = false;
-  round = 49;
+  round = 1;
   health = 150;
   money = 500;
   offScreen = new ArrayList<Bloon>();
