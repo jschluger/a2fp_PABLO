@@ -5,12 +5,12 @@ public class Projectile {
   float speed;
   Bloon target;
   
-  Projectile(int x, int y, Bloon tar, float sped) { // x,y = tower, tarx,tary = target coor
+  Projectile(int x, int y, Bloon tar, float spd) { // x,y = tower, tarx,tary = target coor
     photo = loadImage("dart.png");
     photo.resize(15,15);
     this.x = x;
     this.y = y;
-    speed = sped;
+    speed = spd;
     target = tar;
   }
   

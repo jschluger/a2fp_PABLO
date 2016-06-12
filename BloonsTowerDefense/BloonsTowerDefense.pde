@@ -75,7 +75,7 @@ void draw() {
 
 public void loadOnScreen() {
   //adding the bloons one at a time to the screen
-  if (! offScreen.isEmpty() && frameCount % 10 == 0) {
+  if (! offScreen.isEmpty() && frameCount % (60 - round) == 0) {
     onScreen.add( offScreen.remove(0) );
   } 
 }
