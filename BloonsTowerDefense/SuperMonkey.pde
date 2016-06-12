@@ -6,9 +6,9 @@ public class SuperMonkey extends Tower {
     x = 651;
     y = 205;
     killList = new PriorityQueue<Bloon>();
-    fireRate = 6;
+    fireRate = 10;
     fired = fireRate;
-    projectileSpeed = 50;
+    projectileSpeed = 45;
     fill(c);
     photo = loadImage("Super_Monkey.png");
     photo.resize(40,40);
