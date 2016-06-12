@@ -38,7 +38,7 @@ public class Projectile {
     if ( abs(x - target.x ) < speed &&
          abs(x - target.x ) < speed){
 	    target.setHealth( target.health - 1 );
-	    BloonsTowerDefense.money += 2;
+	    BloonsTowerDefense.money += 5;
       return true;
     }
     else return false;
