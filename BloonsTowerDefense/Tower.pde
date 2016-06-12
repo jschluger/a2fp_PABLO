@@ -7,6 +7,7 @@ public abstract class Tower {
   PriorityQueue<Bloon> killList;
   int fireRate;
   int fired;
+  int projectileSpeed;
   boolean placed;
   float angle;
   PImage photo;
@@ -25,7 +26,7 @@ public abstract class Tower {
       {
         faceTarget(target);
         target.marked = true;
-        Projectile dart = new Projectile(x + 20, y + 20, target, 10);
+        Projectile dart = new Projectile(x + 20, y + 20, target, projectileSpeed);
         projects.add( dart );
         fired = 0;
       }

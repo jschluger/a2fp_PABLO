@@ -2,7 +2,7 @@ static ArrayList<Bloon> offScreen, onScreen;
 ArrayList<Tower> towers;
 ArrayList<Projectile> projects;
 
-int health, money;
+static int health, money;
 int stage;
 boolean locked;
 static boolean validLoc; //validLoc for valid location;
@@ -11,6 +11,7 @@ int choice; //which tower you are buying
 int ID = -1; //ID of tower in ArrayList towers
 int xOffset, yOffset;
 PImage map;
+int errorTime;
 
 void setup(){
   health = 150;
@@ -27,6 +28,7 @@ void setup(){
   for (int i = 0; i < 15; i++)
     offScreen.add( new Bloon( (int)(Math.random()* 3) + 1) );
   size(800, 600);
+  errorTime = -1;
 
   //load map
   map = loadImage("map.png");
@@ -53,6 +55,7 @@ void draw() {
   displayTowers();
   displayProjectiles();
   displayText();
+  displayErrors();
 
 } // end draw()
 
@@ -71,7 +74,6 @@ public void displayBloons() {
     }
     else if (onScreen.get(i).health <= 0) {
       onScreen.remove(i);
-      money += 5;
       i--;
     }
     else {
@@ -129,6 +131,11 @@ public void displayText() {
   text( money, 686, 48);
 }
 
+public void displayErrors() {
+  if (errorTime >= 0) 
+    text("Not Enough Money!", 628, 500);
+  errorTime--;
+}
 public boolean checkLoc() {
   boolean nearTowers = true; //checks if there are turrets on the spot
   for (int i = 0; i < towers.size(); i++) {
@@ -162,14 +169,20 @@ void mouseClicked() {
   if (!locked && mouseX > 600 && mouseY > 205
               && mouseX < 642 && mouseY < 248
               ) {
-    locked = true;
-    choice = 0;
+    if (money >= choices[0].cost) {
+      locked = true;
+      choice = 0;
+    }
+      else errorTime = 200;
   }
   else if (!locked && mouseX > 651 && mouseY > 205
               && mouseX < 691 && mouseY < 248
               ) {
-    locked = true;
-    choice = 1;
+    if (money >= choices[1].cost) {
+      locked = true;
+      choice = 1;
+    }
+      else errorTime = 200;
   }
   else {
     selectTower();

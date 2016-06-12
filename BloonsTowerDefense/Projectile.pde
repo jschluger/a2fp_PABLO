@@ -7,7 +7,7 @@ public class Projectile {
   
   Projectile(int x, int y, Bloon tar, float sped) { // x,y = tower, tarx,tary = target coor
     photo = loadImage("dart.png");
-    photo.resize(20,20);
+    photo.resize(5,5);
     this.x = x;
     this.y = y;
     speed = sped;
@@ -29,10 +29,11 @@ public class Projectile {
   }
     
   public boolean checkHit() {
-    if ( abs(x - target.x ) < 4 &&
-         abs(x - target.x ) < 4){
+    if ( abs(x - target.x ) < speed &&
+         abs(x - target.x ) < speed){
 	    target.setHealth( target.health - 1 );
-	    return true;
+	    BloonsTowerDefense.money += 5;
+      return true;
     }
     else return false;
       
