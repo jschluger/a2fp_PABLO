@@ -33,9 +33,10 @@ void setup(){
   towers = new ArrayList<Tower>();
   projects = new ArrayList<Projectile>();
   locked = false;
-  choices = new Tower[2];
+  choices = new Tower[3];
   choices[0] = new Monkey();
-  choices[1] = new SuperMonkey();
+  choices[1] = new BoomerangThrower(); 
+  choices[2] = new SuperMonkey();
   choice = -1;
   size(800, 600);
   errorTime = -1;
@@ -313,7 +314,17 @@ void mouseClicked() {
       choice = 1;
     }
     else errorTime = 200;
+           }
+    else if (!locked && mouseX > 701 && mouseY > 205
+           && mouseX < 741 && mouseY < 248
+           ) {
+    if (money >= choices[2].cost) {
+      locked = true;
+      choice = 2;
+    }
+    
   }
+           
   if (roundOver) {
      if (mouseX > 621 && mouseY > 505
      && mouseX < 758 && mouseY < 540) {
@@ -377,7 +388,9 @@ void mousePressed() {
     if (choice == 0)
       choices[0] = new Monkey();
     if (choice == 1)
-      choices[1] = new SuperMonkey();
+      choices[1] = new BoomerangThrower();
+    if (choice == 2)
+      choices[2] = new SuperMonkey();
     choice = -1;   
   }
   locked = false;

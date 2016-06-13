@@ -3,7 +3,7 @@ public class SuperMonkey extends Tower {
   public SuperMonkey() {
     rad = 300;
     cost = 2000;
-    x = 651;
+    x = 701;
     y = 205;
     killList = new PriorityQueue<Bloon>();
     fireRate = 10;

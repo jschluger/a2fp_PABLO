@@ -11,7 +11,8 @@ public class Projectile {
     photo.resize(15,15);
     this.x = x;
     this.y = y;
-    speed = spd;
+    if (spd == -1) speed = tar.speed;
+    else speed = spd;
     target = tar;
     faceTarget();
   }
@@ -38,7 +39,7 @@ public class Projectile {
     if ( abs(x - target.x ) < speed &&
          abs(x - target.x ) < speed){
 	    target.setHealth( target.health - 1 );
-	    BloonsTowerDefense.money += 5;
+	    BloonsTowerDefense.money += 2;
       return true;
     }
     else return false;
