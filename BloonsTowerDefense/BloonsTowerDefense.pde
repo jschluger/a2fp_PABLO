@@ -3,13 +3,11 @@ import java.util.PriorityQueue;
 static ArrayList<Bloon> offScreen, onScreen;
 ArrayList<Tower> towers;
 ArrayList<Projectile> projects;
-boolean gameOver;
 boolean roundOver;
 int round;
 final int NUM_ROUNDS = 50;
 
 static int health, money;
-int stage;
 boolean locked;
 static boolean validLoc; //validLoc for valid location;
 Tower[] choices;
@@ -18,13 +16,11 @@ int ID = -1; //ID of tower in ArrayList towers
 int xOffset, yOffset;
 PImage map;
 int errorTime;
-int displayTime;
-int loadTime;
+boolean pressed;
 
 void setup(){
-  gameOver = false;
-  roundOver = false;
-  round = 1;
+  roundOver = true;
+  round = 0;
   health = 150;
   money = 500;
   offScreen = new ArrayList<Bloon>();
@@ -36,11 +32,10 @@ void setup(){
   choices[0] = new Monkey();
   choices[1] = new SuperMonkey();
   choice = -1;
-  loadOffScreen();
+  //loadOffScreen();
   size(800, 600);
   errorTime = -1;
-  displayTime = 500;
-  loadTime = 500;
+  pressed = false;
 
   //load map
   map = loadImage("map.png");
@@ -61,8 +56,7 @@ void setup(){
 
 void draw() {
   background(map);
-  gameOver();
-  if (!gameOver) {
+  if (!gameOver()) {
     displayText();
     loadOnScreen();
     displayBloons();
@@ -133,13 +127,25 @@ public void loadOffScreen() {
 }
 
 public void loadOnScreen() {
-  //adding the bloons one at a time to the screen
+  if (roundOver) {
+    text("CLICK HERE TO \nSTART NEXT ROUND", 630, 500);
+  
+    if (pressed) {
+      roundOver = false;
+      round += 1;
+      loadOffScreen();
+      //adding the bloons one at a time to the screen
+      pressed = false;
+    }
+  }
   if (! offScreen.isEmpty() && frameCount % (60 - round) == 0) {
-    onScreen.add( offScreen.remove(0) );
-  } 
+        onScreen.add( offScreen.remove(0) );
+      }
 }
 
 public void displayBloons() {
+  if (onScreen.size() == 0 && offScreen.size() == 0) roundOver = true;
+  
   for (int i = 0; i < onScreen.size(); i++) {
     if (onScreen.get(i).stage == 14) {
       health -= onScreen.remove(i).health;
@@ -155,21 +161,6 @@ public void displayBloons() {
     }
   }
   
-  if (onScreen.size() == 0 && offScreen.size() == 0) {
-    if (round == NUM_ROUNDS) {
-      gameOver = true;
-      gameOver();
-      return;
-    }
-    roundOver = true;
-    loadTime--;
-    if (loadTime == 0) {
-      loadTime = 500; // reset loadTime
-      roundOver = false;
-      round++;
-      loadOffScreen();
-    }
-  }
 }
 
 public void placeTowers() {
@@ -225,13 +216,16 @@ public void displayText() {
   
   //roundOver
   if (roundOver && round < NUM_ROUNDS)
-    text( "LOADING", 686, 123);
+    text( "Next: " + (round + 1), 686, 123);
 }
 
 public void displayErrors() {
   if (errorTime >= 0) 
-    text("Not Enough Money!", 628, 500);
+    { 
+      fill(0);
+      text("Not Enough Money!", 628, 500);
   errorTime--;
+  }
 }
 public boolean checkLoc() {
   boolean nearTowers = true; //checks if there are turrets on the spot
@@ -281,6 +275,14 @@ void mouseClicked() {
     }
     else errorTime = 200;
   }
+  
+  else if ( roundOver ) {
+     if (mouseX > 630 && mouseY > 489
+     && mouseX < 750 && mouseY < 515) {
+        pressed = true; 
+     }
+  }
+  
   else {
     selectTower();
   }
@@ -301,16 +303,16 @@ public void selectTower() {
   }  
 }
 
-void gameOver() {
-  if (gameOver && displayTime > 0) {
+public boolean gameOver() {
+  if (round > NUM_ROUNDS) {
     text("You have won!!!", 628, 500);
-    displayTime--;
+    return true;
   }
   else if (health < 0) {
-    gameOver = true;
     text("GAME OVER", 628, 500);
-    displayTime--;
+    return true;
   }
+  else return false;
 }
 
 
