@@ -27,7 +27,7 @@ void setup(){
   gameSpeed = false;
   roundOver = true;
   round = 0;
-  health = 50;
+  health = 1;
   money = 500;
   offScreen = new ArrayList<Bloon>();
   onScreen = new ArrayList<Bloon>();
@@ -373,6 +373,11 @@ void mouseClicked() {
       gameSpeed = !gameSpeed;
   }
   
+  if (gameOver()) {
+   if ( overRect(608, 368, 175, 40) ) 
+       setup();
+  }
+  
 
 }
 
@@ -405,8 +410,16 @@ public boolean gameOver() {
   }
   if (yes) {
     fill(0);
-    textSize(50);
+    textSize(40);
     text(mes, 167, 279);
+    text("RESTART", 608, 400); 
+    textSize(12);
+    if ( overRect(608, 368, 175, 40) )
+      fill(color(0,255,0),100);
+    else 
+      fill(color(255,0,0),100);
+      
+    rect(608,368,175,40);
   }
   return yes;
 }
