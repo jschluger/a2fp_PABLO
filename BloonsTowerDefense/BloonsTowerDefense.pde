@@ -226,6 +226,8 @@ public void displayText() {
   else 
     text("Click to speed up", 630, 480);
 
+  if (locked)
+    text("Cost:" + choices[choice].cost + "\nFire Rate: " + 60 / choices[choice].fireRate + " projectile / second",600,275 );
 }
 
 public void displayErrors() {
