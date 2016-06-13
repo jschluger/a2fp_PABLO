@@ -28,7 +28,7 @@ void setup(){
   roundOver = true;
   round = 0;
   health = 50;
-  money = 5000000;
+  money = 500;
   offScreen = new ArrayList<Bloon>();
   onScreen = new ArrayList<Bloon>();
   towers = new ArrayList<Tower>();
