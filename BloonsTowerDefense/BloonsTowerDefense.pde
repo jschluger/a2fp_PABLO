@@ -28,8 +28,8 @@ void setup(){
   gameSpeed = false;
   roundOver = true;
   round = 0;
-  money = 500;
   health = 50;
+  money = 5000;
   offScreen = new ArrayList<Bloon>();
   onScreen = new ArrayList<Bloon>();
   towers = new ArrayList<Tower>();
