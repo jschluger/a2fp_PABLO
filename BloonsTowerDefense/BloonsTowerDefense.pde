@@ -27,9 +27,9 @@ boolean gameSpeed; //false = 60fps, true = 120fps
 void setup() {
   gameSpeed = false;
   roundOver = true;
-  round = 49;
+  round = 0;
   health = 50;
-  money = 500;
+  money = 5000;
   offScreen = new ArrayList<Bloon>();
   onScreen = new ArrayList<Bloon>();
   towers = new ArrayList<Tower>();
@@ -377,7 +377,7 @@ void mouseClicked() {
       if (gameSpeed)
 	  frameRate(60);
       else 
-	  frameRate(520);
+	  frameRate(120);
       gameSpeed = !gameSpeed;
   }
   
