@@ -12,6 +12,7 @@ boolean locked;
 static boolean validLoc; //validLoc for valid location;
 Tower[] choices;
 int choice; //which tower you are buying
+int notChoice;
 int ID = -1; //ID of tower in ArrayList towers
 int xOffset, yOffset;
 PImage map;
@@ -38,6 +39,7 @@ void setup(){
   choices[1] = new BoomerangThrower(); 
   choices[2] = new SuperMonkey();
   choice = -1;
+  notChoice = -1;
   size(800, 600);
   errorTime = -1;
   pressed = false;
@@ -240,7 +242,8 @@ public void displayErrors() {
     { 
       fill(0);
       text("Not Enough Money!", 628, 350);
-  errorTime--;
+      text("Cost:" + choices[notChoice].cost + "\nFire Rate: " + 60 / choices[notChoice].fireRate + " projectile / second",600,275 );
+      errorTime--;
   }
 }
 
@@ -305,7 +308,10 @@ void mouseClicked() {
       locked = true;
       choice = 0;
     }
-    else errorTime = 200;
+    else {
+      errorTime = 200;
+      notChoice = 0;
+    }
   }
    else if (!locked && mouseX > 651 && mouseY > 205
            && mouseX < 691 && mouseY < 248
@@ -314,8 +320,11 @@ void mouseClicked() {
       locked = true;
       choice = 1;
     }
-    else errorTime = 200;
-           }
+    else {
+      errorTime = 200;
+      notChoice = 1;
+    }
+  }
     else if (!locked && mouseX > 701 && mouseY > 205
            && mouseX < 741 && mouseY < 248
            ) {
@@ -323,8 +332,11 @@ void mouseClicked() {
       locked = true;
       choice = 2;
     }
-    else errorTime = 200;
-  }
+    else {
+      errorTime = 200;
+      notChoice = 2;
+      }
+    }
            
   if (roundOver) {
      if (mouseX > 621 && mouseY > 505
