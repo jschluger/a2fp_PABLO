@@ -129,7 +129,7 @@ public void loadOffScreen() {
 
 public void loadOnScreen() {
   if (roundOver) {
-    text("CLICK HERE TO \nSTART NEXT ROUND", 630, 500);
+    text("CLICK HERE TO \nSTART NEXT ROUND", 630, 520);
   
     if (pressed) {
       roundOver = false;
@@ -238,7 +238,6 @@ public boolean checkLoc() {
   }
     
   return (nearTowers) && (
-    
                           (mouseX < 85 && mouseY < 245) ||
                           (mouseX < 300 && mouseY < 95) ||
                           (mouseX > 276 && mouseY > 95 && mouseX < 308 && mouseY < 121) ||
@@ -276,6 +275,15 @@ void mouseClicked() {
     }
     else errorTime = 200;
   }
+<<<<<<< HEAD
+  else if (roundOver) {
+     if (mouseX > 630 && mouseY > 511
+     && mouseX < 750 && mouseY < 540) {
+        pressed = true; 
+     }
+  }
+  else {
+=======
   
   if ( roundOver ) {
      if (mouseX > 630 && mouseY > 489
@@ -283,6 +291,7 @@ void mouseClicked() {
         pressed = true; 
      }
   }  
+>>>>>>> 385b4081c520d6af7a4b46afc12d1ab449279e74
     selectTower();
 }
 
