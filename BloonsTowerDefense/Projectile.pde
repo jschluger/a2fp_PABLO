@@ -5,6 +5,8 @@ public class Projectile {
   float speed;
   Bloon target;
   float angle;
+  int boom;
+  PImage explosionPic;
   
   Projectile(int x, int y, Bloon tar, float spd) { // x,y = tower, tarx,tary = target coor
     photo = loadImage("ball.png");
@@ -15,6 +17,8 @@ public class Projectile {
     else speed = spd;
     target = tar;
     faceTarget();
+    boom = 0;
+    explosionPic = loadImage("Explosion.png");
   }
   
   void display() {
@@ -38,7 +42,18 @@ public class Projectile {
   public boolean checkHit() {
     if ( abs(x - target.x ) < speed &&
          abs(x - target.x ) < speed){
-	    target.setHealth( target.health - 1 );
+      if (boom > 0) {
+        explosionPic.resize(boom/2 + 30,boom/2 + 30);
+        image(explosionPic,target.x - (boom/2 + 30)/2, target.y - (boom/2 + 30)/2);
+        for (int i = 0; i < BloonsTowerDefense.onScreen.size(); i++) {
+          if (dist(BloonsTowerDefense.onScreen.get(i).x,BloonsTowerDefense.onScreen.get(i).y, target.x,target.y) < boom/2 + 30) {
+            BloonsTowerDefense.onScreen.get(i).setHealth( BloonsTowerDefense.onScreen.get(i).health -1);
+          }
+        }
+      }
+      else {
+	      target.setHealth( target.health - 1 );
+      }
 	    BloonsTowerDefense.money += 2;
       return true;
     }

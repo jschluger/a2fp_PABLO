@@ -5,9 +5,9 @@ public class Cannon extends Tower {
     x = 701;
     y = 205;
     killList = new PriorityQueue<Bloon>();
-    fireRate = 20;
+    fireRate = 50;
     fired = fireRate;
-    projectileSpeed = -1;
+    projectileSpeed = 8;
     fill(c);
     photo = loadImage("Cannon.png");
     photo.resize(40,40);
