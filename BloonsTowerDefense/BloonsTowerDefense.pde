@@ -24,7 +24,7 @@ boolean spdHigh;
 
 boolean gameSpeed; //false = 60fps, true = 120fps
 
-void setup() {
+void setup(){
   gameSpeed = false;
   roundOver = true;
   round = 0;
@@ -256,7 +256,12 @@ public void displayErrors() {
     { 
       fill(0);
       text("Not Enough Money!", 628, 350);
-      text("Cost: " + choices[notChoice].cost + "\nFire Rate: " + 60 / choices[notChoice].fireRate + " projectile / second",600,275 );
+      if (60 / choices[choice].fireRate < 1) {
+        text("Cost: " + choices[choice].cost + "\nFire Rate: " + "SLOW" + " projectile / second",600,275 );
+      }
+      else {
+        text("Cost: " + choices[choice].cost + "\nFire Rate: " + 60 / choices[choice].fireRate + " projectile / second",600,275 );
+    }
       errorTime--;
   }
 }
