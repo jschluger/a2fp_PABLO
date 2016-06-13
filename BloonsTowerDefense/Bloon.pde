@@ -10,7 +10,7 @@ public class Bloon implements Comparable{
     setHealth(1);
     bloon = loadImage("red.png");
     x = 0;
-    y = height / 2 - 15;
+    y = 270;
     speed = 1;
     stage = 0;
     marked = false;
@@ -60,11 +60,11 @@ public class Bloon implements Comparable{
     }
     else if ( stage == 3 ) {
 	    y += speed;
-	    if (y > 437) stage++; 
+	    if (y > 430) stage++; 
     }
     else if ( stage == 4 ) {
 	    x -= speed;
-	    if (x < 75) stage++; 
+	    if (x < 57) stage++; 
     }
     else if ( stage == 5 ) {
 	    y += speed;
@@ -84,7 +84,7 @@ public class Bloon implements Comparable{
     }
     else if ( stage == 9 ) {
 	    y -= speed;
-	    if ( y <  244) stage++; 
+	    if ( y < 227) stage++; 
     }
     else if ( stage == 10 ) {
 	    x += speed;
@@ -92,7 +92,7 @@ public class Bloon implements Comparable{
     }
     else if ( stage == 11 ) {
 	    y -= speed;
-	    if (y < 85) stage++; 
+	    if (y < 62) stage++; 
     }
     else if ( stage == 12 ) {
 	    x -= speed;
