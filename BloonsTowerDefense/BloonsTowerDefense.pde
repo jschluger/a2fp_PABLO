@@ -32,7 +32,6 @@ void setup(){
   choices[0] = new Monkey();
   choices[1] = new SuperMonkey();
   choice = -1;
-  //loadOffScreen();
   size(800, 600);
   errorTime = -1;
   pressed = false;
@@ -274,7 +273,6 @@ void mouseClicked() {
     }
     else errorTime = 200;
   }
-<<<<<<< HEAD
   else if (roundOver) {
      if (mouseX > 630 && mouseY > 511
      && mouseX < 750 && mouseY < 540) {
@@ -282,16 +280,8 @@ void mouseClicked() {
      }
   }
   else {
-=======
-  
-  if ( roundOver ) {
-     if (mouseX > 630 && mouseY > 489
-     && mouseX < 750 && mouseY < 515) {
-        pressed = true; 
-     }
-  }  
->>>>>>> 385b4081c520d6af7a4b46afc12d1ab449279e74
     selectTower();
+  }
 }
 
 public void selectTower() {
