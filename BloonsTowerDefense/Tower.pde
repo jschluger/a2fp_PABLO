@@ -62,28 +62,13 @@ public abstract class Tower {
   }
   
   void faceTarget(Bloon tar) {
-    if (x - tar.x == 0) {
       pushMatrix(); //change origin
       translate(x+20,y+20);
-      if (y - tar.y < 0) {
-        angle = radians(90);
-        rotate(angle);
-      }
-      else {
-        angle = radians(270);
-        rotate(angle);
-      }
-      image(photo,-20,-20);
-      popMatrix();  //move origin back
-    }
-    else {
-      pushMatrix(); //change origin
-      translate(x+20,y+20);
-      angle = PI + atan2(tar.x,tar.y);
+      angle = -atan2(tar.x-x,tar.y-y) + PI;
       rotate(angle);
       image(photo,-20,-20);
       popMatrix();  //move origin back
-    }
+    
   }
   
   void faceAngle() {
