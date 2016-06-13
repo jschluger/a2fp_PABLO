@@ -327,21 +327,12 @@ public boolean gameOver() {
   else if (health < 0) {
     mes = "Game Over :(";
     yes = true;
-<<<<<<< HEAD
   }
   if (yes) {
     fill(0);
     textSize(50);
     text(mes, 167, 279);
   }
-=======
-  }
-  if (yes) {
-    fill(0);
-    textSize(50);
-    text(mes, 167, 279);
-  }
->>>>>>> e4130bb3c91f08c04a7485ed3d799499de22aa81
   return yes;
 }
 

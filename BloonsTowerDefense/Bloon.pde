@@ -1,4 +1,4 @@
-public class Bloon implements Comparable{
+public class Bloon implements Comparable {
   int health;
   int x, y;
   float speed;
