@@ -1,15 +1,16 @@
 public class Bloon implements Comparable{
   int health;
-  int c;
   int x, y;
   float speed;
   int stage;
   boolean marked;
+  PImage bloon;
   
   public Bloon() {
     setHealth(1);
+    bloon = loadImage("red.png");
     x = 0;
-    y = height / 2 - 15;
+    y = 270;
     speed = 1;
     stage = 0;
     marked = false;
@@ -22,21 +23,25 @@ public class Bloon implements Comparable{
 
   public void setHealth(int hp) { 
     health = hp;
-    if (health == 1)
-      c = color(255,0,0);
-    else if (health == 2)
-      c = color(0,0,255);
-    else if (health == 3)
-      c = color(0,255,0);
-    else 
-      c = color(255,0,221);
+    if (health == 1) {
+      bloon = loadImage("red.png");
+    }
+    else if (health == 2) {
+      bloon = loadImage("blue.png");
+    }
+    else if (health == 3) {
+      bloon = loadImage("green.png");
+    }
+    else {
+      bloon = loadImage("pink.png");
+    }
     speed = hp;
     marked = false;
   }
     
   public void display() {
-    fill(c);
-    ellipse(x, y, 15, 15);
+    bloon.resize(20,25);
+    image(bloon,x,y);
   }
 
   public void move() {
@@ -55,11 +60,11 @@ public class Bloon implements Comparable{
     }
     else if ( stage == 3 ) {
 	    y += speed;
-	    if (y > 437) stage++; 
+	    if (y > 430) stage++; 
     }
     else if ( stage == 4 ) {
 	    x -= speed;
-	    if (x < 75) stage++; 
+	    if (x < 57) stage++; 
     }
     else if ( stage == 5 ) {
 	    y += speed;
@@ -79,7 +84,7 @@ public class Bloon implements Comparable{
     }
     else if ( stage == 9 ) {
 	    y -= speed;
-	    if ( y <  244) stage++; 
+	    if ( y < 227) stage++; 
     }
     else if ( stage == 10 ) {
 	    x += speed;
@@ -87,7 +92,7 @@ public class Bloon implements Comparable{
     }
     else if ( stage == 11 ) {
 	    y -= speed;
-	    if (y < 85) stage++; 
+	    if (y < 62) stage++; 
     }
     else if ( stage == 12 ) {
 	    x -= speed;

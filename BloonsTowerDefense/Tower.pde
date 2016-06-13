@@ -1,5 +1,3 @@
-import java.util.*;
-
 public abstract class Tower {
   int rad;
   int cost;
