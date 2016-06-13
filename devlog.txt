@@ -13,6 +13,33 @@ Team Pablo's . . .
                                               \______/ 
 
 =========================================================
+2016-06-12:
+Team:
+New map
+New Boomerang, Cannon, Explosions
+Money system, selling
+User health
+Changing game speed
+Rotating towers functional
+Levels system
+Game Over and Restart functionality
+
+DEBUG DEBUG DEBUG
+FINAL
+WOO!
+=========================================================
+2016-06-11:
+Richard: Experimented with rotating towers, not fully functional
+=========================================================
+2016-06-10:
+Team: updated plan and devlog
+=========================================================
+2016-06-09:
+Team took a mental health day
+=========================================================
+2016-06-08:
+Team: Fixed kill function
+=========================================================
 2016-06-07:
 Manish and Richard: Fixed bugs that made program crash and resized projectile,
                     made bloons comparable to be utilized in PriorityQueue and
