@@ -18,8 +18,10 @@ PImage map;
 int errorTime;
 boolean pressed;
 
+boolean gameSpeed; //flase = 60fps, true = 120fps
+
 void setup(){
-  frameRate(120);
+  gameSpeed = false;
   roundOver = true;
   round = 0;
   health = 150;
@@ -218,6 +220,13 @@ public void displayText() {
   //roundOver
   if (roundOver && round < NUM_ROUNDS)
     text( "Next: " + (round + 1), 686, 123);
+
+  //fast forward button
+  if ( gameSpeed ) 
+    text("Click to slow down", 630, 480);
+  else 
+    text("Click to speed up", 630, 480);
+
 }
 
 public void displayErrors() {
@@ -283,6 +292,15 @@ void mouseClicked() {
      }
   }
     selectTower();
+    
+    if (mouseX > 630 && mouseY > 470
+     && mouseX < 730 && mouseY < 480) {
+      if (gameSpeed)
+        frameRate(60);
+      else 
+        frameRate(120);
+      gameSpeed = !gameSpeed;
+     }
 }
 
 public void selectTower() {
