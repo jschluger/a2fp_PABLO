@@ -19,6 +19,7 @@ int errorTime;
 boolean pressed;
 
 void setup(){
+  frameRate(120);
   roundOver = true;
   round = 0;
   health = 150;
