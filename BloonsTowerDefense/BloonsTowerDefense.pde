@@ -18,7 +18,7 @@ PImage map;
 int errorTime;
 boolean pressed;
 
-boolean gameSpeed; //flase = 60fps, true = 120fps
+boolean gameSpeed; //false = 60fps, true = 120fps
 
 void setup(){
   gameSpeed = false;
@@ -54,7 +54,6 @@ void setup(){
   }
   for (Tower t : choices) t.display();
 }// end setup()
-
 
 void draw() {
   background(map);
@@ -236,6 +235,7 @@ public void displayErrors() {
   errorTime--;
   }
 }
+
 public boolean checkLoc() {
   boolean nearTowers = true; //checks if there are turrets on the spot
   for (int i = 0; i < towers.size(); i++) {
@@ -262,7 +262,6 @@ public boolean checkLoc() {
                           (mouseX > 410 && mouseY > 265 && mouseX < 588 && mouseY < 340) 
                           );
 }  
-
 
 void mouseClicked() {
   if (!locked && mouseX > 600 && mouseY > 205
@@ -328,7 +327,6 @@ public boolean gameOver() {
   }
   else return false;
 }
-
 
 void mousePressed() {
   if (locked) {
