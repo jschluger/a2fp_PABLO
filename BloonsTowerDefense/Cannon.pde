@@ -1,6 +1,6 @@
 public class Cannon extends Tower {
   public Cannon() {
-    rad = 200;
+    rad = 250;
     cost = 900;
     x = 701;
     y = 205;
