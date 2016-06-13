@@ -214,7 +214,7 @@ public void displayProjectiles() {
 }
 
 public void displayText() {
-  
+  fill(0);
   //health
   text( health, 686, 83);
   
