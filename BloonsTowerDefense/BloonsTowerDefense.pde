@@ -23,8 +23,8 @@ boolean gameSpeed; //flase = 60fps, true = 120fps
 void setup(){
   gameSpeed = false;
   roundOver = true;
-  round = 0;
-  health = 150;
+  round = 1;
+  health = 50;
   money = 500;
   offScreen = new ArrayList<Bloon>();
   onScreen = new ArrayList<Bloon>();
@@ -297,7 +297,7 @@ void mouseClicked() {
       if (gameSpeed)
 	  frameRate(60);
       else 
-	  frameRate(120);
+	  frameRate(520);
       gameSpeed = !gameSpeed;
   }
 }
@@ -318,15 +318,23 @@ public void selectTower() {
 }
 
 public boolean gameOver() {
+  String mes = "";
+  boolean yes = false;
+  
   if (round > NUM_ROUNDS) {
-    text("You have won!!!", 628, 500);
-    return true;
+    mes = "You have won!!!";
+    yes = true;
   }
   else if (health < 0) {
-    text("GAME OVER", 628, 500);
-    return true;
+    mes = "Game Over :(";
+    yes = true;
   }
-  else return false;
+  if (yes) {
+    fill(0);
+    textSize(50);
+    text(mes, 167, 279);
+  }
+  return yes;
 }
 
 
