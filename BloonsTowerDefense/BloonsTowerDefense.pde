@@ -230,9 +230,9 @@ public void displayText() {
     text("Next: " + (round + 1), 686, 123);
 
   //fast forward button
-  if ( gameSpeed ) 
+  if ( gameSpeed && round <= NUM_ROUNDS && health > 0 ) 
     text("Click to slow down", 630, 480);
-  else 
+  else if (!gameSpeed && round <= NUM_ROUNDS && health > 0)
     text("Click to speed up", 630, 480);
 
   if (locked) {
