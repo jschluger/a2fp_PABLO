@@ -26,7 +26,7 @@ boolean gameSpeed; //false = 60fps, true = 120fps
 void setup(){
   gameSpeed = false;
   roundOver = true;
-  round = 0;
+  round = 49;
   health = 50;
   money = 500;
   offScreen = new ArrayList<Bloon>();
@@ -74,6 +74,8 @@ void draw() {
     displayProjectiles();
     displayErrors();
   }
+  displayBloons();
+  displayText();
 
 } // end draw()
 
