@@ -214,10 +214,6 @@ public void displayProjectiles() {
 }
 
 public void displayText() {
-  // coordinate debug
-  ellipse( mouseX, mouseY, 2, 2 );
-  fill(color(0,0,0));
-  text( "x: " + mouseX + " y: " + mouseY, mouseX + 2, mouseY );
   
   //health
   text( health, 686, 83);
