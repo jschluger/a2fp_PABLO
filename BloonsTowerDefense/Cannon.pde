@@ -2,7 +2,7 @@ public class Cannon extends Tower {
   public Cannon() {
     rad = 200;
     cost = 900;
-    x = 751;
+    x = 701;
     y = 205;
     killList = new PriorityQueue<Bloon>();
     fireRate = 20;

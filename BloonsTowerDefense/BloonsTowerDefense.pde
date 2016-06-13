@@ -27,8 +27,13 @@ void setup(){
   gameSpeed = false;
   roundOver = true;
   round = 0;
+<<<<<<< HEAD
   health = 50;
   money = 5000;
+=======
+  health = 1;
+  money = 500;
+>>>>>>> 0f54bb280797138cca37e15bfcb4582596dd36d4
   offScreen = new ArrayList<Bloon>();
   onScreen = new ArrayList<Bloon>();
   towers = new ArrayList<Tower>();
@@ -145,8 +150,6 @@ public void loadOnScreen() {
     if (pressed) {
       roundOver = false;
       money += 100 + round*10;
-      round += 1;
-      loadOffScreen();
       //adding the bloons one at a time to the screen
       pressed = false;
     }
@@ -361,13 +364,6 @@ void mouseClicked() {
       }
     }
            
-  if (roundOver) {
-     if (mouseX > 621 && mouseY > 505
-     && mouseX < 758 && mouseY < 540) {
-        pressed = true; 
-     }
-  }
-  
     if (ID > -1) {
       if (mouseX > 621 && mouseY > 415
       && mouseX < 662 && mouseY < 435) {
@@ -384,6 +380,11 @@ void mouseClicked() {
       else 
 	  frameRate(520);
       gameSpeed = !gameSpeed;
+  }
+  
+  if (gameOver()) {
+   if ( overRect(608, 368, 175, 40) ) 
+       setup();
   }
   
 
@@ -418,13 +419,29 @@ public boolean gameOver() {
   }
   if (yes) {
     fill(0);
-    textSize(50);
+    textSize(40);
     text(mes, 167, 279);
+    text("RESTART", 608, 400); 
+    textSize(12);
+    if ( overRect(608, 368, 175, 40) )
+      fill(color(0,255,0),100);
+    else 
+      fill(color(255,0,0),100);
+      
+    rect(608,368,175,40);
   }
   return yes;
 }
 
 void mousePressed() {
+  if (roundOver) {
+     if (mouseX > 621 && mouseY > 505
+     && mouseX < 758 && mouseY < 540) {
+        pressed = true;
+        round += 1;
+        loadOffScreen();
+     }
+  }
   if (locked) {
     if (validLoc) {
 	    towers.add(choices[choice]);
