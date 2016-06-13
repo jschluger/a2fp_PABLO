@@ -24,7 +24,7 @@ boolean spdHigh;
 
 boolean gameSpeed; //false = 60fps, true = 120fps
 
-void setup(){
+void setup() {
   gameSpeed = false;
   roundOver = true;
   round = 49;
