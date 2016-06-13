@@ -27,7 +27,7 @@ boolean gameSpeed; //false = 60fps, true = 120fps
 void setup() {
   gameSpeed = false;
   roundOver = true;
-  round = 49;
+  round = 0;
   health = 50;
   money = 500;
   offScreen = new ArrayList<Bloon>();
@@ -44,7 +44,7 @@ void setup() {
   notChoice = -1;
   size(800, 600);
   errorTime = -1;
-  loadTime = round * 25;
+  loadTime = round * 50;
   pressed = false;
   lvlHigh = false;
   spdHigh = false;
@@ -84,7 +84,7 @@ void draw() {
 } // end draw()
 
 public void loadOffScreen() {
-  if (loadTime++ < round * 25){
+  if (loadTime++ < round * 50){
     if (round < 3) {
       if (random(100) < 95)
         offScreen.add( new Bloon(1) );
@@ -239,9 +239,14 @@ public void displayText() {
   else 
     text("Click to speed up", 630, 480);
 
-  if (locked)
-    text("Cost: " + choices[choice].cost + "\nFire Rate: " + 60 / choices[choice].fireRate + " projectile / second",600,275 );
-    
+  if (locked) {
+    if (60 / choices[choice].fireRate < 1) {
+      text("Cost: " + choices[choice].cost + "\nFire Rate: " + "SLOW" + " projectile / second",600,275 );
+    }
+    else {
+      text("Cost: " + choices[choice].cost + "\nFire Rate: " + 60 / choices[choice].fireRate + " projectile / second",600,275 );
+    }
+  }
   if (ID > -1) 
     text("SELL", 630, 430);
 }
