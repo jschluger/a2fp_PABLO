@@ -17,6 +17,8 @@ int xOffset, yOffset;
 PImage map;
 int errorTime;
 boolean pressed;
+boolean lvlHigh;
+boolean spdHigh;
 
 boolean gameSpeed; //false = 60fps, true = 120fps
 
@@ -38,6 +40,8 @@ void setup(){
   size(800, 600);
   errorTime = -1;
   pressed = false;
+  lvlHigh = false;
+  spdHigh = false;
 
   //load map
   map = loadImage("map.png");
@@ -58,6 +62,7 @@ void setup(){
 void draw() {
   background(map);
   if (!gameOver()) {
+    highlight();
     displayText();
     loadOnScreen();
     displayBloons();
@@ -263,6 +268,33 @@ public boolean checkLoc() {
                           );
 }  
 
+void update() {
+  spdHigh = overRect(621,462,125,24);
+  lvlHigh = overRect(621,505,137,35);
+}
+
+void highlight() {
+  update();
+  if (spdHigh) {
+    fill(color(255,0,0),100);
+    rect(621,462,125,24);
+  }
+  if (lvlHigh && roundOver) {
+    fill(color(255,0,0),100);
+    rect(621,505,137,35);
+  }
+}
+  
+
+boolean overRect(int x, int y, int width, int height)  {
+  if (mouseX >= x && mouseX <= x+width && 
+      mouseY >= y && mouseY <= y+height) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 void mouseClicked() {
   if (!locked && mouseX > 600 && mouseY > 205
       && mouseX < 642 && mouseY < 248
@@ -283,16 +315,16 @@ void mouseClicked() {
     else errorTime = 200;
   }
   if (roundOver) {
-     if (mouseX > 630 && mouseY > 511
-     && mouseX < 750 && mouseY < 540) {
+     if (mouseX > 621 && mouseY > 505
+     && mouseX < 758 && mouseY < 540) {
         pressed = true; 
      }
   }
 
   selectTower();
     
-  if (mouseX > 630 && mouseY > 470
-      && mouseX < 730 && mouseY < 480) {
+  if (mouseX > 621 && mouseY > 462
+      && mouseX < 746 && mouseY < 486) {
       if (gameSpeed)
 	  frameRate(60);
       else 
