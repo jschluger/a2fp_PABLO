@@ -25,7 +25,7 @@ boolean gameSpeed; //false = 60fps, true = 120fps
 void setup(){
   gameSpeed = false;
   roundOver = true;
-  round = 1;
+  round = 0;
   health = 50;
   money = 500;
   offScreen = new ArrayList<Bloon>();
