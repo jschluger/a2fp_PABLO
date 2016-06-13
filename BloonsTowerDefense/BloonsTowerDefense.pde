@@ -323,7 +323,7 @@ void mouseClicked() {
       locked = true;
       choice = 2;
     }
-    
+    else errorTime = 200;
   }
            
   if (roundOver) {
