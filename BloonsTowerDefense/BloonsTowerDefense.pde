@@ -26,7 +26,7 @@ boolean gameSpeed; //false = 60fps, true = 120fps
 void setup(){
   gameSpeed = false;
   roundOver = true;
-  round = 0;
+  round = 49;
   health = 50;
   money = 500;
   offScreen = new ArrayList<Bloon>();
@@ -144,8 +144,6 @@ public void loadOnScreen() {
     if (pressed) {
       roundOver = false;
       money += 100 + round*10;
-      round += 1;
-      loadOffScreen();
       //adding the bloons one at a time to the screen
       pressed = false;
     }
@@ -347,13 +345,6 @@ void mouseClicked() {
       notChoice = 2;
       }
     }
-           
-  if (roundOver) {
-     if (mouseX > 621 && mouseY > 505
-     && mouseX < 758 && mouseY < 540) {
-        pressed = true; 
-     }
-  }
   
     if (ID > -1) {
       if (mouseX > 621 && mouseY > 415
@@ -412,6 +403,14 @@ public boolean gameOver() {
 }
 
 void mousePressed() {
+  if (roundOver) {
+     if (mouseX > 621 && mouseY > 505
+     && mouseX < 758 && mouseY < 540) {
+        pressed = true;
+        round += 1;
+        loadOffScreen();
+     }
+  }
   if (locked) {
     if (validLoc) {
 	    towers.add(choices[choice]);
