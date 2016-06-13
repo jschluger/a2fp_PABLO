@@ -5,9 +5,11 @@ public class Bloon implements Comparable{
   float speed;
   int stage;
   boolean marked;
+  PImage bloon;
   
   public Bloon() {
     setHealth(1);
+    bloon = loadImage("red.png");
     x = 0;
     y = height / 2 - 15;
     speed = 1;
@@ -22,21 +24,29 @@ public class Bloon implements Comparable{
 
   public void setHealth(int hp) { 
     health = hp;
-    if (health == 1)
+    if (health == 1) {
       c = color(255,0,0);
-    else if (health == 2)
+      bloon = loadImage("red.png");
+    }
+    else if (health == 2) {
       c = color(0,0,255);
-    else if (health == 3)
+      bloon = loadImage("blue.png");
+    }
+    else if (health == 3) {
       c = color(0,255,0);
-    else 
+      bloon = loadImage("green.png");
+    }
+    else {
       c = color(255,0,221);
+      bloon = loadImage("pink.png");
+    }
     speed = hp;
     marked = false;
   }
     
   public void display() {
-    fill(c);
-    ellipse(x, y, 15, 15);
+    bloon.resize(20,25);
+    image(bloon,x,y);
   }
 
   public void move() {
