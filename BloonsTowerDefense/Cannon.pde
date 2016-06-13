@@ -5,7 +5,7 @@ public class Cannon extends Tower {
     x = 701;
     y = 205;
     killList = new PriorityQueue<Bloon>();
-    fireRate = 50;
+    fireRate = 100;
     fired = fireRate;
     projectileSpeed = 8;
     fill(c);
