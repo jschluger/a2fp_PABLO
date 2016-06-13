@@ -74,6 +74,8 @@ void draw() {
     displayProjectiles();
     displayErrors();
   }
+  displayBloons();
+  displayText();
 
 } // end draw()
 
