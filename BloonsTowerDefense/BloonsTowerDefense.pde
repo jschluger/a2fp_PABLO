@@ -275,23 +275,13 @@ void mouseClicked() {
     }
     else errorTime = 200;
   }
-<<<<<<< HEAD
-  else if (roundOver) {
+  
+   if (roundOver) {
      if (mouseX > 630 && mouseY > 511
      && mouseX < 750 && mouseY < 540) {
         pressed = true; 
      }
   }
-  else {
-=======
-  
-  if ( roundOver ) {
-     if (mouseX > 630 && mouseY > 489
-     && mouseX < 750 && mouseY < 515) {
-        pressed = true; 
-     }
-  }  
->>>>>>> 385b4081c520d6af7a4b46afc12d1ab449279e74
     selectTower();
 }
 
