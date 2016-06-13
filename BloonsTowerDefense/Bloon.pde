@@ -1,6 +1,5 @@
 public class Bloon implements Comparable{
   int health;
-  int c;
   int x, y;
   float speed;
   int stage;
@@ -25,19 +24,15 @@ public class Bloon implements Comparable{
   public void setHealth(int hp) { 
     health = hp;
     if (health == 1) {
-      c = color(255,0,0);
       bloon = loadImage("red.png");
     }
     else if (health == 2) {
-      c = color(0,0,255);
       bloon = loadImage("blue.png");
     }
     else if (health == 3) {
-      c = color(0,255,0);
       bloon = loadImage("green.png");
     }
     else {
-      c = color(255,0,221);
       bloon = loadImage("pink.png");
     }
     speed = hp;
