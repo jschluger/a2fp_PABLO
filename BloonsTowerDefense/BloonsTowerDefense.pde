@@ -17,6 +17,7 @@ int ID = -1; //ID of tower in ArrayList towers
 int xOffset, yOffset;
 PImage map;
 int errorTime;
+int loadTime;
 boolean pressed;
 boolean lvlHigh;
 boolean spdHigh;
@@ -43,6 +44,7 @@ void setup(){
   notChoice = -1;
   size(800, 600);
   errorTime = -1;
+  loadTime = round * 50;
   pressed = false;
   lvlHigh = false;
   spdHigh = false;
@@ -68,6 +70,7 @@ void draw() {
   if (!gameOver()) {
     highlight();
     displayText();
+    loadOffScreen();
     loadOnScreen();
     displayBloons();
     displayTowers();
@@ -81,7 +84,7 @@ void draw() {
 } // end draw()
 
 public void loadOffScreen() {
-  for (int i = 0; i < round * 25; i++)
+  if (loadTime++ < round * 50){
     if (round < 3) {
       if (random(100) < 95)
         offScreen.add( new Bloon(1) );
@@ -136,6 +139,7 @@ public void loadOffScreen() {
       else
         offScreen.add( new Bloon(4) );
     }
+  }
 }
 
 public void loadOnScreen() {
@@ -434,7 +438,7 @@ void mousePressed() {
      && mouseX < 758 && mouseY < 540) {
         pressed = true;
         round += 1;
-        loadOffScreen();
+        loadTime = 0;
      }
   }
   if (locked) {
