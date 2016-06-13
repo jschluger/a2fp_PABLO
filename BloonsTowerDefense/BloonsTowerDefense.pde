@@ -143,6 +143,7 @@ public void loadOnScreen() {
   
     if (pressed) {
       roundOver = false;
+      money += 100 + round*10;
       round += 1;
       loadOffScreen();
       //adding the bloons one at a time to the screen
@@ -237,6 +238,9 @@ public void displayText() {
 
   if (locked)
     text("Cost: " + choices[choice].cost + "\nFire Rate: " + 60 / choices[choice].fireRate + " projectile / second",600,275 );
+    
+  if (ID > -1) 
+    text("SELL", 630, 430);
 }
 
 public void displayErrors() {
@@ -286,6 +290,10 @@ void highlight() {
   if (spdHigh) {
     fill(color(255,0,0),100);
     rect(621,462,125,24);
+  }
+  if (ID > -1 && overRect(621,415,41,20)) {
+    fill(color(255,0,0),100);
+    rect(621,415,41,20);
   }
   if (lvlHigh && roundOver) {
     fill(color(255,0,0),100);
@@ -346,6 +354,13 @@ void mouseClicked() {
         pressed = true; 
      }
   }
+  
+    if (ID > -1) {
+      if (mouseX > 621 && mouseY > 415
+      && mouseX < 662 && mouseY < 435) {
+        money += towers.remove(ID).cost * .8;
+    }
+  }
 
   selectTower();
     
@@ -357,6 +372,8 @@ void mouseClicked() {
 	  frameRate(520);
       gameSpeed = !gameSpeed;
   }
+  
+
 }
 
 public void selectTower() {
