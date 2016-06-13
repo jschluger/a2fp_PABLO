@@ -89,7 +89,7 @@ public abstract class Tower {
   void faceAngle() {
     pushMatrix();
     translate(x+20,y+20);
-    rotate(-angle);
+    rotate(angle);
     image(photo,-20,-20);
     popMatrix();
   }
