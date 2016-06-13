@@ -241,7 +241,7 @@ public void displayText() {
 
   if (locked) {
     if (60 / choices[choice].fireRate < 1) {
-      text("Cost: " + choices[choice].cost + "\nFire Rate: " + "SLOW" + " projectile / second",600,275 );
+      text("Cost: " + choices[choice].cost + "\nFire Rate: " + "SLOW",600,275 );
     }
     else {
       text("Cost: " + choices[choice].cost + "\nFire Rate: " + 60 / choices[choice].fireRate + " projectile / second",600,275 );
