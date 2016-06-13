@@ -26,18 +26,19 @@ boolean gameSpeed; //false = 60fps, true = 120fps
 void setup(){
   gameSpeed = false;
   roundOver = true;
-  round = 49;
-  health = 50;
+  round = 0;
+  health = 1;
   money = 500;
   offScreen = new ArrayList<Bloon>();
   onScreen = new ArrayList<Bloon>();
   towers = new ArrayList<Tower>();
   projects = new ArrayList<Projectile>();
   locked = false;
-  choices = new Tower[3];
+  choices = new Tower[4];
   choices[0] = new Monkey();
   choices[1] = new BoomerangThrower(); 
-  choices[2] = new SuperMonkey();
+  choices[2] = new Cannon();
+  choices[3] = new SuperMonkey();
   choice = -1;
   notChoice = -1;
   size(800, 600);
@@ -345,7 +346,19 @@ void mouseClicked() {
       notChoice = 2;
       }
     }
-  
+    else if (!locked && mouseX > 751 && mouseY > 205
+           && mouseX < 791 && mouseY < 248
+           ) {
+    if (money >= choices[3].cost) {
+      locked = true;
+      choice = 3;
+    }
+    else {
+      errorTime = 200;
+      notChoice = 3;
+      }
+    }
+           
     if (ID > -1) {
       if (mouseX > 621 && mouseY > 415
       && mouseX < 662 && mouseY < 435) {
@@ -362,6 +375,11 @@ void mouseClicked() {
       else 
 	  frameRate(520);
       gameSpeed = !gameSpeed;
+  }
+  
+  if (gameOver()) {
+   if ( overRect(608, 368, 175, 40) ) 
+       setup();
   }
   
 
@@ -396,8 +414,16 @@ public boolean gameOver() {
   }
   if (yes) {
     fill(0);
-    textSize(50);
+    textSize(40);
     text(mes, 167, 279);
+    text("RESTART", 608, 400); 
+    textSize(12);
+    if ( overRect(608, 368, 175, 40) )
+      fill(color(0,255,0),100);
+    else 
+      fill(color(255,0,0),100);
+      
+    rect(608,368,175,40);
   }
   return yes;
 }
@@ -421,7 +447,9 @@ void mousePressed() {
     if (choice == 1)
       choices[1] = new BoomerangThrower();
     if (choice == 2)
-      choices[2] = new SuperMonkey();
+      choices[2] = new Cannon();
+    if (choice == 3)
+      choices[3] = new SuperMonkey();
     choice = -1;   
   }
   locked = false;
