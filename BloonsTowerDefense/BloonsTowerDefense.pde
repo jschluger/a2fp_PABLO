@@ -225,7 +225,7 @@ public void displayText() {
   
   //roundOver
   if (roundOver && round < NUM_ROUNDS)
-    text( "Next: " + (round + 1), 686, 123);
+    text("Next: " + (round + 1), 686, 123);
 
   //fast forward button
   if ( gameSpeed ) 
