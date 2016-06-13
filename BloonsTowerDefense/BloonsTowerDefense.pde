@@ -291,6 +291,10 @@ void highlight() {
     fill(color(255,0,0),100);
     rect(621,462,125,24);
   }
+  if (ID > -1 && overRect(621,415,41,20)) {
+    fill(color(255,0,0),100);
+    rect(621,415,41,20);
+  }
   if (lvlHigh && roundOver) {
     fill(color(255,0,0),100);
     rect(621,505,137,35);
@@ -351,9 +355,9 @@ void mouseClicked() {
      }
   }
   
-    if (ID >= 0) {
-      if (mouseX > 621 && mouseY > 420
-      && mouseX < 740 && mouseY < 440) {
+    if (ID > -1) {
+      if (mouseX > 621 && mouseY > 415
+      && mouseX < 662 && mouseY < 435) {
         money += towers.remove(ID).cost * .8;
     }
   }
