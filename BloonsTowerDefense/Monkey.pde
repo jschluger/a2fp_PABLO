@@ -2,7 +2,7 @@ public class Monkey extends Tower {
    
   public Monkey() {
     rad = 200;
-    cost = 250;
+    cost = 200;
     x = 601;
     y = 205;
     killList = new PriorityQueue<Bloon>();
