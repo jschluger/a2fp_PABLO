@@ -35,7 +35,6 @@ void setup(){
   choices[0] = new Monkey();
   choices[1] = new SuperMonkey();
   choice = -1;
-  //loadOffScreen();
   size(800, 600);
   errorTime = -1;
   pressed = false;
@@ -284,23 +283,23 @@ void mouseClicked() {
     }
     else errorTime = 200;
   }
-  
-   if (roundOver) {
+  if (roundOver) {
      if (mouseX > 630 && mouseY > 511
      && mouseX < 750 && mouseY < 540) {
         pressed = true; 
      }
   }
-    selectTower();
+
+  selectTower();
     
-    if (mouseX > 630 && mouseY > 470
-     && mouseX < 730 && mouseY < 480) {
+  if (mouseX > 630 && mouseY > 470
+      && mouseX < 730 && mouseY < 480) {
       if (gameSpeed)
-        frameRate(60);
+	  frameRate(60);
       else 
-        frameRate(120);
+	  frameRate(120);
       gameSpeed = !gameSpeed;
-     }
+  }
 }
 
 public void selectTower() {
