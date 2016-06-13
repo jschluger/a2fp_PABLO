@@ -26,7 +26,7 @@ boolean gameSpeed; //false = 60fps, true = 120fps
 void setup(){
   gameSpeed = false;
   roundOver = true;
-  round = 0;
+  round = 41;
   health = 50;
   money = 500;
   offScreen = new ArrayList<Bloon>();
@@ -234,7 +234,7 @@ public void displayText() {
     text("Click to speed up", 630, 480);
 
   if (locked)
-    text("Cost:" + choices[choice].cost + "\nFire Rate: " + 60 / choices[choice].fireRate + " projectile / second",600,275 );
+    text("Cost: " + choices[choice].cost + "\nFire Rate: " + 60 / choices[choice].fireRate + " projectile / second",600,275 );
 }
 
 public void displayErrors() {
@@ -242,7 +242,7 @@ public void displayErrors() {
     { 
       fill(0);
       text("Not Enough Money!", 628, 350);
-      text("Cost:" + choices[notChoice].cost + "\nFire Rate: " + 60 / choices[notChoice].fireRate + " projectile / second",600,275 );
+      text("Cost: " + choices[notChoice].cost + "\nFire Rate: " + 60 / choices[notChoice].fireRate + " projectile / second",600,275 );
       errorTime--;
   }
 }
