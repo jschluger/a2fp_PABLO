@@ -27,7 +27,7 @@ boolean gameSpeed; //false = 60fps, true = 120fps
 void setup(){
   gameSpeed = false;
   roundOver = true;
-  round = 0;
+  round = 49;
   health = 50;
   money = 5000;
   offScreen = new ArrayList<Bloon>();
@@ -44,7 +44,7 @@ void setup(){
   notChoice = -1;
   size(800, 600);
   errorTime = -1;
-  loadTime = round * 50;
+  loadTime = round * 25;
   pressed = false;
   lvlHigh = false;
   spdHigh = false;
@@ -84,7 +84,7 @@ void draw() {
 } // end draw()
 
 public void loadOffScreen() {
-  if (loadTime++ < round * 50){
+  if (loadTime++ < round * 25){
     if (round < 3) {
       if (random(100) < 95)
         offScreen.add( new Bloon(1) );
