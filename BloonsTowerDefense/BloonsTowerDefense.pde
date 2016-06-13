@@ -223,7 +223,7 @@ public void displayErrors() {
   if (errorTime >= 0) 
     { 
       fill(0);
-      text("Not Enough Money!", 628, 500);
+      text("Not Enough Money!", 628, 350);
   errorTime--;
   }
 }
@@ -266,7 +266,7 @@ void mouseClicked() {
     }
     else errorTime = 200;
   }
-  else if (!locked && mouseX > 651 && mouseY > 205
+   else if (!locked && mouseX > 651 && mouseY > 205
            && mouseX < 691 && mouseY < 248
            ) {
     if (money >= choices[1].cost) {
@@ -276,16 +276,13 @@ void mouseClicked() {
     else errorTime = 200;
   }
   
-  else if ( roundOver ) {
+  if ( roundOver ) {
      if (mouseX > 630 && mouseY > 489
      && mouseX < 750 && mouseY < 515) {
         pressed = true; 
      }
-  }
-  
-  else {
+  }  
     selectTower();
-  }
 }
 
 public void selectTower() {
